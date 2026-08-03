@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Solicitar Medicamentos | Help Med CWB</title>
+
+    <!-- CSS Geral -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- CSS da página -->
+    <link rel="stylesheet" href="css/solicitar.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ==========================================
+HEADER
+========================================== -->
+
+<header>
+
+    <div class="container">
+
+        <a href="index.html" class="logo">
+
+            <img src="Imagens/Logo1.jpeg" alt="Help Med CWB">
+
+        </a>
+
+        <nav>
+
+            <ul>
+
+                <li><a href="index.html">Início</a></li>
+
+                <li><a href="quem-somos.html">Quem Somos</a></li>
+
+                <li><a href="como-doar.html">Como Doar</a></li>
+
+                <li><a href="solicitar.html" class="ativo">
+                    Solicitar Medicamentos
+                </a></li>
+
+                <li><a href="contato.html">Contato</a></li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+
+</header>
+
+<!-- ==========================================
+BANNER
+========================================== -->
+
+<section class="banner-solicitar reveal-zoom">
+
+    <div class="container">
+
+        <div class="banner-texto">
+
+            <span>CONSULTE NOSSO ESTOQUE</span>
+
+            <h1>Encontre os medicamentos de que você precisa</h1>
+
+            <p>
+
+                Pesquise medicamentos disponíveis na Help Med CWB.
+                Nosso sistema permite localizar medicamentos pelo
+                nome comercial ou princípio ativo e solicitar aqueles
+                necessários para continuidade do seu tratamento.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+PESQUISA
+========================================== -->
+
+<section class="pesquisa reveal">
+
+    <div class="container">
+
+        <div class="titulo-secao">
+
+            <span>PESQUISA</span>
+
+            <h2>Pesquisar Medicamentos</h2>
+
+            <div class="linha"></div>
+
+        </div>
+
+        <div class="barra-pesquisa">
+
+            <input
+                type="text"
+                id="pesquisa"
+                placeholder="Digite o nome do medicamento ou princípio ativo...">
+
+            <button id="btnPesquisar">
+
+                🔍 Pesquisar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+FILTROS
+========================================== -->
+
+<section class="filtros reveal-left">
+
+<div class="container">
+
+<div class="filtro">
+
+<label>Categoria</label>
+
+<select id="categoria">
+
+<option value="">Todas</option>
+
+<option>Analgésico</option>
+
+<option>Antibiótico</option>
+
+<option>Cardiológico</option>
+
+<option>Diabetes</option>
+
+<option>Dermatológico</option>
+
+<option>Hipertensão</option>
+
+</select>
+
+</div>
+
+<div class="filtro">
+
+<label>Receita Médica</label>
+
+<select id="receita">
+
+<option value="">Todos</option>
+
+<option value="sim">Necessita Receita</option>
+
+<option value="nao">Não Necessita</option>
+
+</select>
+
+</div>
+
+<div class="filtro">
+
+<label>Disponibilidade</label>
+
+<select id="estoque">
+
+<option value="">Todos</option>
+
+<option value="disponivel">Disponível</option>
+
+<option value="baixo">Estoque Baixo</option>
+
+</select>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+ÁREA PRINCIPAL
+========================================== -->
+
+<section class="conteudo reveal">
+
+<div class="container painel">
+
+<!-- Lista de medicamentos -->
+
+<div class="lista-medicamentos">
+
+<h2>Medicamentos Disponíveis</h2>
+
+<div id="medicamentos">
+
+<!-- JavaScript irá preencher -->
+
+</div>
+
+</div>
+
+<!-- Cesta -->
+
+<aside class="cesta">
+
+<h2>Minha Cesta</h2>
+
+<div id="lista-cesta">
+
+<p>Nenhum medicamento selecionado.</p>
+
+</div>
+
+<div class="total">
+
+<strong>Total:</strong>
+
+<span id="totalItens">0 medicamentos</span>
+
+</div>
+
+<button id="btnFinalizar">
+
+Finalizar Solicitação
+
+</button>
+
+</aside>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+INFORMAÇÕES IMPORTANTES
+========================================== -->
+
+<section class="informacoes reveal-right">
+
+<div class="container">
+
+<div class="aviso">
+
+<h2>Importante</h2>
+
+<p>
+
+Alguns medicamentos exigem apresentação de receita médica.
+Caso seja necessário, o sistema solicitará o envio da receita
+durante a finalização da solicitação.
+
+</p>
+
+</div>
+
+<div class="fluxo">
+
+<h2>Fluxo da Solicitação</h2>
+
+<div class="etapas">
+
+<div>🔍 Pesquisa</div>
+
+<div>🛒 Cesta</div>
+
+<div>📋 Solicitação</div>
+
+<div>📄 Receita (quando necessária)</div>
+
+<div>✔ Análise</div>
+
+<div>🚚 Entrega ou Retirada</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+CTA
+========================================== -->
+
+<section class="cta reveal">
+
+<div class="container">
+
+<h2>
+
+Não encontrou o medicamento desejado?
+
+</h2>
+
+<p>
+
+Entre em contato com nossa equipe.
+Estamos constantemente recebendo novas doações e atualizando o estoque.
+
+</p>
+
+<a href="contato.html" class="btn verde">
+
+Entrar em Contato
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+MODAL DETALHES DO MEDICAMENTO
+========================================== -->
+
+<div id="modalMedicamento" class="modal">
+
+    <div class="modal-conteudo">
+
+        <span class="fechar-modal" onclick="fecharModal()">&times;</span>
+
+        <div id="conteudoModal"></div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================
+RODAPÉ
+========================================== -->
+
+<footer class="footer reveal">
+
+<div class="container footer-container">
+
+<div class="footer-col">
+
+<img
+src="Imagens/Logo1.jpeg"
+class="footer-logo"
+alt="Help Med">
+
+<p>
+
+Help Med CWB é uma associação sem fins lucrativos dedicada
+à arrecadação e distribuição responsável de medicamentos.
+
+</p>
+
+</div>
+
+<div class="footer-col">
+
+<h3>Institucional</h3>
+
+<ul>
+
+<li><a href="quem-somos.html">Quem Somos</a></li>
+
+<li><a href="como-doar.html">Como Doar</a></li>
+
+<li><a href="contato.html">Contato</a></li>
+
+</ul>
+
+</div>
+
+<div class="footer-col">
+
+<h3>Contato</h3>
+
+<p>📍 Curitiba - PR</p>
+
+<p>📧 Em implantação</p>
+
+<p>📞 Em implantação</p>
+
+</div>
+
+</div>
+
+<div class="copyright">
+
+© 2026 Help Med CWB • Todos os direitos reservados.
+
+</div>
+
+</footer>
+
+<!-- Base de medicamentos -->
+<script src="js/medicamentos.js"></script>
+
+<!-- Sistema de pesquisa -->
+<script src="js/solicitar.js"></script>
+
+<!-- Animações -->
+<script src="js/script.js"></script>
+
+</body>
+
+</html>

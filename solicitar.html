@@ -333,19 +333,411 @@ Entrar em Contato
 </section>
 
 <!-- ==========================================
-MODAL DETALHES DO MEDICAMENTO
+MODAL DE DETALHES DO MEDICAMENTO
 ========================================== -->
 
-<div id="modalMedicamento" class="modal">
-
+<div
+    id="modalMedicamento"
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tituloModal"
+    aria-hidden="true"
+>
     <div class="modal-conteudo">
 
-        <span class="fechar-modal" onclick="fecharModal()">&times;</span>
+        <button
+            type="button"
+            class="fechar-modal"
+            aria-label="Fechar detalhes do medicamento"
+        >
+            &times;
+        </button>
 
         <div id="conteudoModal"></div>
 
     </div>
+</div>
 
+<!-- ==========================================
+MODAL DE FINALIZAÇÃO DA SOLICITAÇÃO
+========================================== -->
+
+<div
+    id="modalFinalizacao"
+    class="modal-finalizacao"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tituloFinalizacao"
+    aria-hidden="true"
+>
+    <div class="finalizacao-conteudo">
+
+        <button
+            type="button"
+            id="fecharFinalizacao"
+            class="fechar-finalizacao"
+            aria-label="Fechar finalização"
+        >
+            &times;
+        </button>
+
+        <div class="finalizacao-cabecalho">
+
+            <span>FINALIZAÇÃO DO PEDIDO</span>
+
+            <h2 id="tituloFinalizacao">
+                Confirme sua solicitação
+            </h2>
+
+            <p>
+                Revise os medicamentos, informe a forma de recebimento
+                e confirme os dados necessários.
+            </p>
+
+        </div>
+
+        <!-- RESUMO DA CESTA -->
+
+        <section class="etapa-finalizacao">
+
+            <h3>
+                <span class="numero-finalizacao">1</span>
+                Resumo dos medicamentos
+            </h3>
+
+            <div id="resumoFinalizacao" class="resumo-finalizacao">
+
+                <!-- Preenchido pelo JavaScript -->
+
+            </div>
+
+            <div class="total-finalizacao">
+
+                <strong>Total solicitado:</strong>
+
+                <span id="totalFinalizacao">
+                    0 medicamento(s)
+                </span>
+
+            </div>
+
+        </section>
+
+        <!-- RECEITA MÉDICA -->
+
+        <section
+            id="secaoReceita"
+            class="etapa-finalizacao secao-receita"
+            hidden
+        >
+
+            <h3>
+                <span class="numero-finalizacao">2</span>
+                Receita médica
+            </h3>
+
+            <div class="aviso-receita-finalizacao">
+
+                <strong>Atenção:</strong>
+
+                <p>
+                    Um ou mais medicamentos selecionados necessitam de
+                    receita médica. Você pode anexar a imagem agora ou
+                    continuar sem o documento.
+                </p>
+
+                <p>
+                    Caso a receita não seja anexada, o fornecimento do
+                    medicamento ficará sujeito à avaliação da equipe da
+                    Help Med CWB.
+                </p>
+
+            </div>
+
+            <div class="campo-arquivo">
+
+                <label for="arquivoReceita">
+                    Anexar receita
+                </label>
+
+                <input
+                    type="file"
+                    id="arquivoReceita"
+                    name="arquivoReceita"
+                    accept=".jpg,.jpeg,.png,.pdf"
+                >
+
+                <small>
+                    Formatos aceitos: JPG, PNG ou PDF.
+                </small>
+
+                <div
+                    id="nomeArquivoReceita"
+                    class="nome-arquivo"
+                ></div>
+
+            </div>
+
+        </section>
+
+        <!-- FORMA DE RECEBIMENTO -->
+
+        <section class="etapa-finalizacao">
+
+            <h3>
+                <span class="numero-finalizacao">3</span>
+                Forma de recebimento
+            </h3>
+
+            <div class="opcoes-recebimento">
+
+                <label class="opcao-recebimento">
+
+                    <input
+                        type="radio"
+                        name="formaRecebimento"
+                        value="retirada"
+                        checked
+                    >
+
+                    <span class="opcao-conteudo">
+
+                        <strong>Retirada no local</strong>
+
+                        <small>
+                            O pedido será retirado em um ponto definido
+                            pela Help Med CWB.
+                        </small>
+
+                    </span>
+
+                </label>
+
+                <label class="opcao-recebimento">
+
+                    <input
+                        type="radio"
+                        name="formaRecebimento"
+                        value="entrega"
+                    >
+
+                    <span class="opcao-conteudo">
+
+                        <strong>Entrega no endereço</strong>
+
+                        <small>
+                            Informe o endereço onde deseja receber o pedido.
+                        </small>
+
+                    </span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+        <!-- ENDEREÇO -->
+
+        <section
+            id="secaoEndereco"
+            class="etapa-finalizacao"
+            hidden
+        >
+
+            <h3>
+                <span class="numero-finalizacao">4</span>
+                Endereço de entrega
+            </h3>
+
+            <div class="endereco-opcoes">
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="tipoEndereco"
+                        value="cadastro"
+                        checked
+                    >
+
+                    Utilizar o endereço do cadastro
+
+                </label>
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="tipoEndereco"
+                        value="novo"
+                    >
+
+                    Informar outro endereço
+
+                </label>
+
+            </div>
+
+            <div
+                id="novoEndereco"
+                class="formulario-endereco"
+                hidden
+            >
+
+                <div class="campo-formulario campo-cep">
+
+                    <label for="cepEntrega">CEP</label>
+
+                    <input
+                        type="text"
+                        id="cepEntrega"
+                        maxlength="9"
+                        placeholder="00000-000"
+                    >
+
+                </div>
+
+                <div class="campo-formulario campo-logradouro">
+
+                    <label for="logradouroEntrega">
+                        Rua ou avenida
+                    </label>
+
+                    <input
+                        type="text"
+                        id="logradouroEntrega"
+                        placeholder="Informe o logradouro"
+                    >
+
+                </div>
+
+                <div class="campo-formulario campo-numero">
+
+                    <label for="numeroEntrega">Número</label>
+
+                    <input
+                        type="text"
+                        id="numeroEntrega"
+                        placeholder="Número"
+                    >
+
+                </div>
+
+                <div class="campo-formulario campo-complemento">
+
+                    <label for="complementoEntrega">
+                        Complemento
+                    </label>
+
+                    <input
+                        type="text"
+                        id="complementoEntrega"
+                        placeholder="Apartamento, bloco ou referência"
+                    >
+
+                </div>
+
+                <div class="campo-formulario campo-bairro">
+
+                    <label for="bairroEntrega">Bairro</label>
+
+                    <input
+                        type="text"
+                        id="bairroEntrega"
+                        placeholder="Informe o bairro"
+                    >
+
+                </div>
+
+                <div class="campo-formulario campo-cidade">
+
+                    <label for="cidadeEntrega">Cidade</label>
+
+                    <input
+                        type="text"
+                        id="cidadeEntrega"
+                        value="Curitiba"
+                    >
+
+                </div>
+
+                <div class="campo-formulario campo-estado">
+
+                    <label for="estadoEntrega">Estado</label>
+
+                    <select id="estadoEntrega">
+
+                        <option value="PR" selected>Paraná</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- DECLARAÇÃO -->
+
+        <section class="etapa-finalizacao">
+
+            <h3>
+                <span class="numero-finalizacao">5</span>
+                Confirmação
+            </h3>
+
+            <label class="termo-confirmacao">
+
+                <input
+                    type="checkbox"
+                    id="confirmarInformacoes"
+                >
+
+                <span>
+                    Confirmo que as informações fornecidas são verdadeiras
+                    e estou ciente de que a solicitação será analisada pela
+                    equipe da Help Med CWB.
+                </span>
+
+            </label>
+
+        </section>
+
+        <!-- MENSAGEM DE VALIDAÇÃO -->
+
+        <div
+            id="mensagemFinalizacao"
+            class="mensagem-finalizacao"
+            role="alert"
+        ></div>
+
+        <!-- BOTÕES -->
+
+        <div class="acoes-finalizacao">
+
+            <button
+                type="button"
+                id="cancelarFinalizacao"
+                class="btn-cancelar-finalizacao"
+            >
+                Voltar
+            </button>
+
+            <button
+                type="button"
+                id="confirmarSolicitacao"
+                class="btn-confirmar-finalizacao"
+            >
+                Confirmar Solicitação
+            </button>
+
+        </div>
+
+    </div>
 </div>
 
 <!-- ==========================================
@@ -412,8 +804,7 @@ Help Med CWB é uma associação sem fins lucrativos dedicada
 
 <!-- Base de medicamentos -->
 <script src="js/medicamentos.js"></script>
-
-<!-- Sistema de pesquisa -->
+<script src="js/carrinho.js"></script>
 <script src="js/solicitar.js"></script>
 
 <!-- Animações -->

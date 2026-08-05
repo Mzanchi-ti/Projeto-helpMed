@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Painel Administrativo | Help Med CWB</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="Imagens/Logo2.png"
+    >
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <!-- =========================================
+    MENU LATERAL
+    ========================================== -->
+
+    <aside id="menuLateral" class="menu-lateral">
+
+        <div class="marca-admin">
+
+            <a href="index.html">
+
+                <img
+                    src="Imagens/Logo1.jpeg"
+                    alt="Logo Help Med CWB"
+                >
+
+            </a>
+
+            <div>
+                <strong>Help Med CWB</strong>
+                <span>Painel Administrativo</span>
+            </div>
+
+        </div>
+
+        <nav id="navegacaoAdmin" class="navegacao-admin">
+
+            <button
+                type="button"
+                class="item-menu ativo"
+                data-pagina="dashboard"
+            >
+                <span>📊</span>
+                Dashboard
+            </button>
+
+            <button
+                type="button"
+                class="item-menu"
+                data-pagina="medicamentos"
+            >
+                <span>💊</span>
+                Medicamentos
+            </button>
+
+            <button
+                type="button"
+                class="item-menu"
+                data-pagina="solicitacoes"
+            >
+                <span>📋</span>
+                Solicitações
+            </button>
+
+            <button
+                type="button"
+                class="item-menu"
+                data-pagina="doacoes"
+            >
+                <span>📦</span>
+                Doações
+            </button>
+
+            <button
+                type="button"
+                class="item-menu"
+                data-pagina="usuarios"
+            >
+                <span>👥</span>
+                Usuários
+            </button>
+
+            <button
+                type="button"
+                class="item-menu"
+                data-pagina="relatorios"
+            >
+                <span>📈</span>
+                Relatórios
+            </button>
+
+        </nav>
+
+        <div class="rodape-menu">
+
+            <a href="index.html">
+                Voltar ao site
+            </a>
+
+            <button type="button" id="btnSairAdmin">
+                Sair
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- =========================================
+    CONTEÚDO PRINCIPAL
+    ========================================== -->
+
+    <main class="conteudo-principal">
+
+        <header class="topo-admin">
+
+            <div class="topo-esquerda">
+
+                <button
+                    type="button"
+                    id="btnAbrirMenu"
+                    class="btn-abrir-menu"
+                    aria-label="Abrir menu"
+                >
+                    ☰
+                </button>
+
+                <div>
+                    <span>HELP MED CWB</span>
+
+                    <h1 id="tituloPagina">
+                        Dashboard
+                    </h1>
+                </div>
+
+            </div>
+
+            <div class="perfil-admin">
+
+                <div class="avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Administrador</strong>
+                    <small>Gestão do sistema</small>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- =========================================
+        DASHBOARD
+        ========================================== -->
+
+        <section
+            id="pagina-dashboard"
+            class="pagina-admin ativa"
+        >
+
+            <div class="cabecalho-pagina">
+
+                <div>
+                    <span>VISÃO GERAL</span>
+                    <h2>Indicadores da Help Med CWB</h2>
+                </div>
+
+                <p>
+                    Acompanhe os principais dados de estoque e
+                    solicitações da associação.
+                </p>
+
+            </div>
+
+            <div class="grade-indicadores">
+
+                <article class="indicador">
+
+                    <div class="icone-indicador verde">
+                        💊
+                    </div>
+
+                    <div>
+                        <span>Medicamentos cadastrados</span>
+                        <strong id="indicadorMedicamentos">0</strong>
+                    </div>
+
+                </article>
+
+                <article class="indicador">
+
+                    <div class="icone-indicador azul">
+                        📦
+                    </div>
+
+                    <div>
+                        <span>Unidades em estoque</span>
+                        <strong id="indicadorEstoque">0</strong>
+                    </div>
+
+                </article>
+
+                <article class="indicador">
+
+                    <div class="icone-indicador amarelo">
+                        ⏳
+                    </div>
+
+                    <div>
+                        <span>Solicitações pendentes</span>
+                        <strong id="indicadorPendentes">0</strong>
+                    </div>
+
+                </article>
+
+                <article class="indicador">
+
+                    <div class="icone-indicador vermelho">
+                        ⚠️
+                    </div>
+
+                    <div>
+                        <span>Medicamentos com estoque baixo</span>
+                        <strong id="indicadorEstoqueBaixo">0</strong>
+                    </div>
+
+                </article>
+
+            </div>
+
+            <div class="grade-dashboard">
+
+                <article class="painel">
+
+                    <div class="cabecalho-painel">
+
+                        <div>
+                            <span>SOLICITAÇÕES</span>
+                            <h3>Solicitações recentes</h3>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn-link"
+                            data-abrir-pagina="solicitacoes"
+                        >
+                            Ver todas
+                        </button>
+
+                    </div>
+
+                    <div class="tabela-container">
+
+                        <table class="tabela-admin">
+
+                            <thead>
+                                <tr>
+                                    <th>Protocolo</th>
+                                    <th>Solicitante</th>
+                                    <th>Data</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="dashboardSolicitacoes">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+                <article class="painel">
+
+                    <div class="cabecalho-painel">
+
+                        <div>
+                            <span>ATENÇÃO</span>
+                            <h3>Estoque baixo</h3>
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="dashboardEstoqueBaixo"
+                        class="lista-alertas"
+                    >
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- =========================================
+        MEDICAMENTOS
+        ========================================== -->
+
+        <section
+            id="pagina-medicamentos"
+            class="pagina-admin"
+        >
+
+            <div class="cabecalho-pagina com-acao">
+
+                <div>
+                    <span>ESTOQUE</span>
+                    <h2>Gerenciamento de medicamentos</h2>
+                </div>
+
+                <button
+                    type="button"
+                    id="btnCadastrarMedicamento"
+                    class="btn-principal"
+                >
+                    + Cadastrar medicamento
+                </button>
+
+            </div>
+
+            <div class="barra-filtros">
+
+                <input
+                    type="search"
+                    id="pesquisaMedicamentos"
+                    placeholder="Pesquisar por nome ou princípio ativo"
+                >
+
+                <select id="filtroCategoriaMedicamentos">
+
+                    <option value="">
+                        Todas as categorias
+                    </option>
+
+                </select>
+
+                <select id="filtroEstoqueMedicamentos">
+
+                    <option value="">
+                        Todos os estoques
+                    </option>
+
+                    <option value="disponivel">
+                        Disponível
+                    </option>
+
+                    <option value="baixo">
+                        Estoque baixo
+                    </option>
+
+                    <option value="indisponivel">
+                        Indisponível
+                    </option>
+
+                </select>
+
+            </div>
+
+            <article class="painel">
+
+                <div class="tabela-container">
+
+                    <table class="tabela-admin">
+
+                        <thead>
+                            <tr>
+                                <th>Medicamento</th>
+                                <th>Categoria</th>
+                                <th>Estoque</th>
+                                <th>Receita</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tabelaMedicamentos">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- =========================================
+        SOLICITAÇÕES
+        ========================================== -->
+
+        <section
+            id="pagina-solicitacoes"
+            class="pagina-admin"
+        >
+
+            <div class="cabecalho-pagina">
+
+                <div>
+                    <span>PEDIDOS</span>
+                    <h2>Gerenciamento de solicitações</h2>
+                </div>
+
+                <p>
+                    Consulte pedidos, receitas e formas de recebimento.
+                </p>
+
+            </div>
+
+            <div class="barra-filtros">
+
+                <input
+                    type="search"
+                    id="pesquisaSolicitacoes"
+                    placeholder="Pesquisar protocolo ou solicitante"
+                >
+
+                <select id="filtroStatusSolicitacoes">
+
+                    <option value="">
+                        Todos os status
+                    </option>
+
+                    <option value="Aguardando análise">
+                        Aguardando análise
+                    </option>
+
+                    <option value="Aprovada">
+                        Aprovada
+                    </option>
+
+                    <option value="Recusada">
+                        Recusada
+                    </option>
+
+                    <option value="Entregue">
+                        Entregue
+                    </option>
+
+                </select>
+
+            </div>
+
+            <article class="painel">
+
+                <div class="tabela-container">
+
+                    <table class="tabela-admin">
+
+                        <thead>
+                            <tr>
+                                <th>Protocolo</th>
+                                <th>Solicitante</th>
+                                <th>Itens</th>
+                                <th>Receita</th>
+                                <th>Recebimento</th>
+                                <th>Status</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tabelaSolicitacoes">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- =========================================
+        MÓDULOS FUTUROS
+        ========================================== -->
+
+        <!-- =========================================
+DOAÇÕES
+========================================== -->
+
+<section
+    id="pagina-doacoes"
+    class="pagina-admin"
+>
+
+    <div class="cabecalho-pagina com-acao">
+
+        <div>
+
+            <span>ENTRADAS</span>
+
+            <h2>
+                Gerenciamento de doações
+            </h2>
+
+            <p class="descricao-pagina">
+                Registre, analise e acompanhe os medicamentos
+                recebidos pela Help Med CWB.
+            </p>
+
+        </div>
+
+        <button
+            type="button"
+            id="btnCadastrarDoacao"
+            class="btn-principal"
+        >
+            + Registrar doação
+        </button>
+
+    </div>
+
+    <!-- INDICADORES DAS DOAÇÕES -->
+
+    <div class="grade-indicadores grade-indicadores-doacoes">
+
+        <article class="indicador">
+
+            <div class="icone-indicador azul">
+                📦
+            </div>
+
+            <div>
+
+                <span>
+                    Doações registradas
+                </span>
+
+                <strong id="indicadorTotalDoacoes">
+                    0
+                </strong>
+
+            </div>
+
+        </article>
+
+        <article class="indicador">
+
+            <div class="icone-indicador amarelo">
+                ⏳
+            </div>
+
+            <div>
+
+                <span>
+                    Aguardando triagem
+                </span>
+
+                <strong id="indicadorDoacoesPendentes">
+                    0
+                </strong>
+
+            </div>
+
+        </article>
+
+        <article class="indicador">
+
+            <div class="icone-indicador verde">
+                ✅
+            </div>
+
+            <div>
+
+                <span>
+                    Doações aprovadas
+                </span>
+
+                <strong id="indicadorDoacoesAprovadas">
+                    0
+                </strong>
+
+            </div>
+
+        </article>
+
+        <article class="indicador">
+
+            <div class="icone-indicador vermelho">
+                ❌
+            </div>
+
+            <div>
+
+                <span>
+                    Doações recusadas
+                </span>
+
+                <strong id="indicadorDoacoesRecusadas">
+                    0
+                </strong>
+
+            </div>
+
+        </article>
+
+    </div>
+
+    <!-- FILTROS -->
+
+    <div class="barra-filtros">
+
+        <input
+            type="search"
+            id="pesquisaDoacoes"
+            placeholder="Pesquisar por protocolo, doador ou medicamento"
+        >
+
+        <select id="filtroStatusDoacoes">
+
+            <option value="">
+                Todos os status
+            </option>
+
+            <option value="Aguardando triagem">
+                Aguardando triagem
+            </option>
+
+            <option value="Aprovada">
+                Aprovada
+            </option>
+
+            <option value="Recusada">
+                Recusada
+            </option>
+
+            <option value="Recebida">
+                Recebida
+            </option>
+
+        </select>
+
+    </div>
+
+    <!-- TABELA DAS DOAÇÕES -->
+
+    <article class="painel">
+
+        <div class="tabela-container">
+
+            <table class="tabela-admin">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Protocolo</th>
+
+                        <th>Doador</th>
+
+                        <th>Medicamento</th>
+
+                        <th>Quantidade</th>
+
+                        <th>Validade</th>
+
+                        <th>Status</th>
+
+                        <th>Ações</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="tabelaDoacoes">
+
+                    <!-- Preenchido pelo JavaScript -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </article>
+
+</section>
+
+        <section
+            id="pagina-usuarios"
+            class="pagina-admin"
+        >
+
+            <div class="cabecalho-pagina">
+
+                <div>
+                    <span>CADASTROS</span>
+                    <h2>Gerenciamento de usuários</h2>
+                </div>
+
+            </div>
+
+            <div class="modulo-futuro">
+                <span>👥</span>
+                <h3>Módulo de usuários</h3>
+                <p>
+                    Área reservada para doadores, receptores e
+                    colaboradores.
+                </p>
+            </div>
+
+        </section>
+
+        <section
+            id="pagina-relatorios"
+            class="pagina-admin"
+        >
+
+            <div class="cabecalho-pagina">
+
+                <div>
+                    <span>INDICADORES</span>
+                    <h2>Relatórios gerenciais</h2>
+                </div>
+
+            </div>
+
+            <div class="modulo-futuro">
+                <span>📈</span>
+                <h3>Módulo de relatórios</h3>
+                <p>
+                    Área reservada para relatórios de estoque,
+                    solicitações, doações e distribuição.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- =========================================
+MODAL DE MEDICAMENTO
+========================================== -->
+
+<div
+    id="modalMedicamentoAdmin"
+    class="modal-admin"
+    aria-hidden="true">
+
+    <div class="modal-conteudo">
+
+        <button
+            type="button"
+            id="btnFecharModalMedicamento"
+            class="btn-fechar-modal"
+            aria-label="Fechar formulário"
+        >
+            &times;
+        </button>
+
+        <span class="subtitulo-modal">
+            ESTOQUE
+        </span>
+
+        <h2 id="tituloModalMedicamento">
+            Cadastrar medicamento
+        </h2>
+
+        <form id="formMedicamento">
+
+            <input
+                type="hidden"
+                id="medicamentoId"
+            >
+
+            <div class="grade-formulario">
+
+                <div class="campo-formulario campo-completo">
+
+                    <label for="medicamentoNome">
+                        Nome do medicamento
+                    </label>
+
+                    <input
+                        type="text"
+                        id="medicamentoNome"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo-formulario campo-completo">
+
+                    <label for="medicamentoPrincipio">
+                        Princípio ativo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="medicamentoPrincipio"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo-formulario">
+
+                    <label for="medicamentoCategoria">
+                        Categoria
+                    </label>
+
+                    <input
+                        type="text"
+                        id="medicamentoCategoria"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo-formulario">
+
+                    <label for="medicamentoEstoque">
+                        Quantidade em estoque
+                    </label>
+
+                    <input
+                        type="number"
+                        id="medicamentoEstoque"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo-formulario">
+
+                    <label for="medicamentoReceita">
+                        Necessita receita?
+                    </label>
+
+                    <select id="medicamentoReceita">
+
+                        <option value="false">
+                            Não
+                        </option>
+
+                        <option value="true">
+                            Sim
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div
+                id="mensagemFormulario"
+                class="mensagem-formulario"
+                role="alert"
+            >
+            </div>
+
+            <div class="acoes-modal">
+
+                <button
+                    type="button"
+                    id="btnCancelarMedicamento"
+                    class="btn-secundario"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-principal"
+                >
+                    Salvar medicamento
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- =========================================
+MODAL DE DOAÇÃO
+========================================== -->
+
+<div
+    id="modalDoacaoAdmin"
+    class="modal-admin"
+    aria-hidden="true"
+>
+
+    <div class="modal-conteudo">
+
+        <button
+            type="button"
+            id="btnFecharModalDoacao"
+            class="btn-fechar-modal"
+            aria-label="Fechar formulário de doação"
+        >
+            &times;
+        </button>
+
+        <span class="subtitulo-modal">
+            DOAÇÕES
+        </span>
+
+        <h2 id="tituloModalDoacao">
+            Registrar doação
+        </h2>
+
+        <form id="formDoacao">
+
+            <input
+                type="hidden"
+                id="doacaoId"
+            >
+
+            <div class="grade-formulario">
+
+                <div class="campo-formulario campo-completo">
+
+                    <label for="doacaoDoador">
+                        Nome do doador
+                    </label>
+
+                    <input
+                        type="text"
+                        id="doacaoDoador"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo-formulario campo-completo">
+
+                    <label for="doacaoMedicamento">
+                        Medicamento
+                    </label>
+
+                    <input
+                        type="text"
+                        id="doacaoMedicamento"
+                        placeholder="Nome comercial ou princípio ativo"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo-formulario">
+
+                    <label for="doacaoQuantidade">
+                        Quantidade
+                    </label>
+
+                    <input
+                        type="number"
+                        id="doacaoQuantidade"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo-formulario">
+
+                    <label for="doacaoValidade">
+                        Data de validade
+                    </label>
+
+                    <input
+                        type="date"
+                        id="doacaoValidade"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo-formulario">
+
+                    <label for="doacaoLote">
+                        Número do lote
+                    </label>
+
+                    <input
+                        type="text"
+                        id="doacaoLote"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo-formulario">
+
+                    <label for="doacaoStatus">
+                        Status
+                    </label>
+
+                    <select id="doacaoStatus">
+
+                        <option value="Aguardando triagem">
+                            Aguardando triagem
+                        </option>
+
+                        <option value="Aprovada">
+                            Aprovada
+                        </option>
+
+                        <option value="Recusada">
+                            Recusada
+                        </option>
+
+                        <option value="Recebida">
+                            Recebida
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="campo-formulario campo-completo">
+
+                    <label for="doacaoObservacoes">
+                        Observações da triagem
+                    </label>
+
+                    <textarea
+                        id="doacaoObservacoes"
+                        rows="4"
+                        placeholder="Informe as condições da embalagem, validade, integridade e demais observações"
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+            <div
+                id="mensagemFormularioDoacao"
+                class="mensagem-formulario"
+                role="alert"
+            >
+            </div>
+
+            <div class="acoes-modal">
+
+                <button
+                    type="button"
+                    id="btnCancelarDoacao"
+                    class="btn-secundario"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-principal"
+                >
+                    Salvar doação
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- =========================================
+MODAL DE DETALHES DA DOAÇÃO
+========================================== -->
+
+<div
+    id="modalDetalhesDoacao"
+    class="modal-admin"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tituloDetalhesDoacao"
+    aria-hidden="true"
+>
+
+    <div class="modal-conteudo modal-detalhes-doacao">
+
+        <button
+            type="button"
+            id="btnFecharDetalhesDoacao"
+            class="btn-fechar-modal"
+            aria-label="Fechar detalhes da doação"
+        >
+            &times;
+        </button>
+
+        <span class="subtitulo-modal">
+            DOAÇÃO
+        </span>
+
+        <div class="cabecalho-detalhes-doacao">
+
+            <div>
+
+                <h2 id="tituloDetalhesDoacao">
+                    Detalhes da doação
+                </h2>
+
+                <p id="protocoloDetalhesDoacao">
+                    Protocolo: —
+                </p>
+
+            </div>
+
+            <div id="statusDetalhesDoacao">
+                <!-- Preenchido pelo JavaScript -->
+            </div>
+
+        </div>
+
+        <!-- DADOS DO DOADOR -->
+
+        <section class="bloco-detalhes-doacao">
+
+            <div class="titulo-bloco-detalhes">
+
+                <span>👤</span>
+
+                <h3>
+                    Dados do doador
+                </h3>
+
+            </div>
+
+            <div class="grade-detalhes-doacao">
+
+                <div class="campo-detalhe">
+
+                    <span>Nome</span>
+
+                    <strong id="detalheDoadorNome">
+                        —
+                    </strong>
+
+                </div>
+
+                <div class="campo-detalhe">
+
+                    <span>Telefone</span>
+
+                    <strong id="detalheDoadorTelefone">
+                        —
+                    </strong>
+
+                </div>
+
+                <div class="campo-detalhe">
+
+                    <span>E-mail</span>
+
+                    <strong id="detalheDoadorEmail">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ENDEREÇO DE COLETA -->
+
+        <section class="bloco-detalhes-doacao">
+
+            <div class="titulo-bloco-detalhes">
+
+                <span>📍</span>
+
+                <h3>
+                    Endereço para coleta
+                </h3>
+
+            </div>
+
+            <div class="endereco-detalhes-doacao">
+
+                <strong id="detalheEnderecoPrincipal">
+                    Endereço não informado
+                </strong>
+
+                <span id="detalheEnderecoLocalidade">
+                    —
+                </span>
+
+                <span id="detalheEnderecoCep">
+                    —
+                </span>
+
+                <span id="detalheEnderecoReferencia">
+                </span>
+
+            </div>
+
+        </section>
+
+        <!-- MEDICAMENTO -->
+
+        <section class="bloco-detalhes-doacao">
+
+            <div class="titulo-bloco-detalhes">
+
+                <span>💊</span>
+
+                <h3>
+                    Medicamento informado
+                </h3>
+
+            </div>
+
+            <div class="grade-detalhes-doacao">
+
+                <div class="campo-detalhe campo-detalhe-completo">
+
+                    <span>Medicamento</span>
+
+                    <strong id="detalheDoacaoMedicamento">
+                        —
+                    </strong>
+
+                </div>
+
+                <div class="campo-detalhe">
+
+                    <span>Quantidade</span>
+
+                    <strong id="detalheDoacaoQuantidade">
+                        —
+                    </strong>
+
+                </div>
+
+                <div class="campo-detalhe">
+
+                    <span>Validade</span>
+
+                    <strong id="detalheDoacaoValidade">
+                        —
+                    </strong>
+
+                </div>
+
+                <div class="campo-detalhe">
+
+                    <span>Lote</span>
+
+                    <strong id="detalheDoacaoLote">
+                        —
+                    </strong>
+
+                </div>
+
+                <div class="campo-detalhe">
+
+                    <span>Estado da embalagem</span>
+
+                    <strong id="detalheDoacaoEmbalagem">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- OBSERVAÇÕES -->
+
+        <section class="bloco-detalhes-doacao">
+
+            <div class="titulo-bloco-detalhes">
+
+                <span>📝</span>
+
+                <h3>
+                    Observações
+                </h3>
+
+            </div>
+
+            <p
+                id="detalheDoacaoObservacoes"
+                class="texto-observacoes-doacao"
+            >
+                Nenhuma observação informada.
+            </p>
+
+        </section>
+
+        <!-- COLETA -->
+
+        <section class="bloco-detalhes-doacao">
+
+            <div class="titulo-bloco-detalhes">
+
+                <span>🚚</span>
+
+                <h3>
+                    Coleta da doação
+                </h3>
+
+            </div>
+
+            <div class="grade-formulario">
+
+                <div class="campo-formulario">
+
+                    <label for="dataColetaDoacao">
+                        Data da coleta
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataColetaDoacao"
+                    >
+
+                </div>
+
+                <div class="campo-formulario">
+
+                    <label for="horarioColetaDoacao">
+                        Horário aproximado
+                    </label>
+
+                    <input
+                        type="time"
+                        id="horarioColetaDoacao"
+                    >
+
+                </div>
+
+                <div class="campo-formulario campo-completo">
+
+                    <label for="observacaoColetaDoacao">
+                        Orientações para a coleta
+                    </label>
+
+                    <textarea
+                        id="observacaoColetaDoacao"
+                        rows="3"
+                        placeholder="Ex.: entrar em contato antes de chegar"
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+            <div
+                id="mensagemDetalhesDoacao"
+                class="mensagem-formulario"
+                role="alert"
+            ></div>
+
+        </section>
+
+        <!-- AÇÕES -->
+
+        <div class="acoes-detalhes-doacao">
+
+            <button
+                type="button"
+                id="btnRecusarDetalhesDoacao"
+                class="btn-acao-detalhe btn-recusar"
+            >
+                Recusar doação
+            </button>
+
+            <button
+                type="button"
+                id="btnAprovarDetalhesDoacao"
+                class="btn-acao-detalhe btn-aprovar"
+            >
+                Aprovar doação
+            </button>
+
+            <button
+                type="button"
+                id="btnAgendarColetaDoacao"
+                class="btn-acao-detalhe btn-agendar-coleta"
+            >
+                Agendar coleta
+            </button>
+
+            <button
+                type="button"
+                id="btnConfirmarRecebimentoDoacao"
+                class="btn-acao-detalhe btn-receber"
+            >
+                Confirmar recebimento
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/medicamentos.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/doacoes.js"></script>
+
+</body>
+</html>

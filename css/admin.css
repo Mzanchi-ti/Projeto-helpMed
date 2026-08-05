@@ -1,0 +1,2230 @@
+/*=========================================================
+    HELP MED CWB
+    Painel Administrativo V2
+=========================================================*/
+
+
+/*=========================================================
+    VARIÁVEIS
+=========================================================*/
+
+:root{
+
+    --verde-escuro:#123223;
+    --verde-principal:#1d6b45;
+    --verde-hover:#155437;
+    --verde-claro:#e7f3eb;
+
+    --dourado:#d4a017;
+    --dourado-claro:#fff4d3;
+
+    --azul:#285f91;
+    --azul-claro:#e5eef9;
+
+    --vermelho:#a93226;
+    --vermelho-claro:#fbe7e4;
+
+    --cinza-fundo:#f3f6f4;
+    --cinza-borda:#dbe4dd;
+    --cinza-texto:#68736c;
+
+    --branco:#ffffff;
+
+    --sombra:
+        0 10px 30px rgba(20,60,38,.08);
+
+}
+
+
+/*=========================================================
+    CONFIGURAÇÕES GERAIS
+=========================================================*/
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    min-height:100vh;
+
+    font-family:'Poppins',sans-serif;
+
+    background:var(--cinza-fundo);
+
+    color:#263b2f;
+
+}
+
+button,
+input,
+select{
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+button{
+
+    cursor:pointer;
+
+}
+
+button:disabled{
+
+    cursor:not-allowed;
+
+    opacity:.65;
+
+}
+
+a{
+
+    color:inherit;
+
+}
+
+
+/*=========================================================
+    ESTRUTURA PRINCIPAL
+=========================================================*/
+
+.admin-layout{
+
+    min-height:100vh;
+
+}
+
+.conteudo-principal{
+
+    min-height:100vh;
+
+    margin-left:280px;
+
+    padding:28px;
+
+}
+
+
+/*=========================================================
+    MENU LATERAL
+=========================================================*/
+
+.menu-lateral{
+
+    position:fixed;
+
+    top:0;
+    bottom:0;
+    left:0;
+
+    z-index:1000;
+
+    width:280px;
+
+    display:flex;
+    flex-direction:column;
+
+    padding:26px 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #123223 0%,
+            #173d2b 100%
+        );
+
+    color:var(--branco);
+
+    box-shadow:
+        8px 0 30px rgba(0,0,0,.14);
+
+}
+
+.marca-admin{
+
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:25px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.12);
+
+}
+
+.marca-admin a{
+
+    flex-shrink:0;
+
+}
+
+.marca-admin img{
+
+    width:62px;
+    height:62px;
+
+    display:block;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    background:#ffffff;
+
+}
+
+.marca-admin div{
+
+    display:flex;
+    flex-direction:column;
+
+    min-width:0;
+
+}
+
+.marca-admin strong{
+
+    color:#ffffff;
+
+    font-size:16px;
+
+}
+
+.marca-admin span{
+
+    margin-top:3px;
+
+    color:#c9d8ce;
+
+    font-size:12px;
+    line-height:18px;
+
+}
+
+
+/*=========================================================
+    NAVEGAÇÃO
+=========================================================*/
+
+.navegacao-admin{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:8px;
+
+    margin-top:28px;
+
+}
+
+.item-menu{
+
+    width:100%;
+
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding:14px 16px;
+
+    border:none;
+    border-radius:10px;
+
+    background:transparent;
+
+    color:#d7e4dc;
+
+    font-size:15px;
+    font-weight:500;
+
+    text-align:left;
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
+
+}
+
+.item-menu span{
+
+    width:25px;
+
+    flex-shrink:0;
+
+    font-size:20px;
+
+    text-align:center;
+
+}
+
+.item-menu:hover{
+
+    background:rgba(255,255,255,.09);
+
+    color:#ffffff;
+
+    transform:translateX(4px);
+
+}
+
+.item-menu.ativo{
+
+    background:var(--dourado);
+
+    color:var(--verde-escuro);
+
+    font-weight:700;
+
+}
+
+
+/*=========================================================
+    RODAPÉ DO MENU
+=========================================================*/
+
+.rodape-menu{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:11px;
+
+    margin-top:auto;
+    padding-top:22px;
+
+    border-top:
+        1px solid rgba(255,255,255,.12);
+
+}
+
+.rodape-menu a,
+.rodape-menu button{
+
+    width:100%;
+
+    padding:12px;
+
+    border-radius:9px;
+
+    font-size:14px;
+    font-weight:600;
+
+    text-align:center;
+    text-decoration:none;
+
+    transition:.25s;
+
+}
+
+.rodape-menu a{
+
+    border:
+        1px solid rgba(255,255,255,.2);
+
+    color:#dce8e0;
+
+}
+
+.rodape-menu a:hover{
+
+    background:rgba(255,255,255,.08);
+
+    color:#ffffff;
+
+}
+
+.rodape-menu button{
+
+    border:none;
+
+    background:#ffffff;
+
+    color:var(--verde-escuro);
+
+}
+
+.rodape-menu button:hover{
+
+    background:#ffd166;
+
+}
+
+
+/*=========================================================
+    TOPO DO PAINEL
+=========================================================*/
+
+.topo-admin{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:25px;
+
+    margin-bottom:30px;
+    padding:21px 24px;
+
+    background:var(--branco);
+
+    border-radius:16px;
+
+    box-shadow:var(--sombra);
+
+}
+
+.topo-esquerda{
+
+    display:flex;
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.topo-esquerda span{
+
+    color:var(--dourado);
+
+    font-size:12px;
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+.topo-esquerda h1{
+
+    margin-top:4px;
+
+    color:#18452f;
+
+    font-size:29px;
+
+}
+
+.btn-abrir-menu{
+
+    display:none;
+
+    width:44px;
+    height:44px;
+
+    align-items:center;
+    justify-content:center;
+
+    border:none;
+    border-radius:10px;
+
+    background:var(--verde-principal);
+
+    color:#ffffff;
+
+    font-size:22px;
+
+}
+
+.btn-abrir-menu:hover{
+
+    background:var(--verde-hover);
+
+}
+
+
+/*=========================================================
+    PERFIL
+=========================================================*/
+
+.perfil-admin{
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.avatar{
+
+    width:46px;
+    height:46px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:var(--verde-principal);
+
+    color:#ffffff;
+
+    font-size:19px;
+    font-weight:700;
+
+}
+
+.perfil-admin > div:last-child{
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+.perfil-admin strong{
+
+    color:#18452f;
+
+    font-size:15px;
+
+}
+
+.perfil-admin small{
+
+    color:#748078;
+
+}
+
+
+/*=========================================================
+    PÁGINAS INTERNAS
+=========================================================*/
+
+.pagina-admin{
+
+    display:none;
+
+}
+
+.pagina-admin.ativa{
+
+    display:block;
+
+    animation:entradaPagina .28s ease;
+
+}
+
+@keyframes entradaPagina{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(8px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/*=========================================================
+    CABEÇALHO DAS PÁGINAS
+=========================================================*/
+
+.cabecalho-pagina{
+
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+
+    gap:30px;
+
+    margin-bottom:27px;
+
+}
+
+.cabecalho-pagina span{
+
+    color:var(--dourado);
+
+    font-size:13px;
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+.cabecalho-pagina h2{
+
+    margin-top:7px;
+
+    color:#18452f;
+
+    font-size:31px;
+    line-height:1.25;
+
+}
+
+.cabecalho-pagina > p{
+
+    max-width:480px;
+
+    color:var(--cinza-texto);
+
+    font-size:15px;
+    line-height:25px;
+
+    text-align:right;
+
+}
+
+.cabecalho-pagina.com-acao{
+
+    align-items:center;
+
+}
+
+
+/*=========================================================
+    BOTÕES
+=========================================================*/
+
+.btn-principal,
+.btn-secundario,
+.btn-link{
+
+    border:none;
+
+    border-radius:9px;
+
+    font-size:14px;
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.btn-principal{
+
+    padding:13px 20px;
+
+    background:var(--verde-principal);
+
+    color:#ffffff;
+
+}
+
+.btn-principal:hover{
+
+    background:var(--verde-hover);
+
+    transform:translateY(-2px);
+
+}
+
+.btn-secundario{
+
+    padding:12px 20px;
+
+    border:1px solid #ccd7cf;
+
+    background:#ffffff;
+
+    color:#46534b;
+
+}
+
+.btn-secundario:hover{
+
+    background:#f0f3f1;
+
+}
+
+.btn-link{
+
+    padding:9px 14px;
+
+    background:#edf4ef;
+
+    color:var(--verde-principal);
+
+}
+
+.btn-link:hover{
+
+    background:#dcecdf;
+
+}
+
+
+/*=========================================================
+    INDICADORES
+=========================================================*/
+
+.grade-indicadores{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+    gap:20px;
+
+    margin-bottom:25px;
+
+}
+
+.indicador{
+
+    display:flex;
+    align-items:center;
+
+    gap:16px;
+
+    min-width:0;
+
+    padding:21px;
+
+    background:var(--branco);
+
+    border-radius:15px;
+
+    box-shadow:var(--sombra);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+.indicador:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 15px 35px rgba(20,60,38,.12);
+
+}
+
+.icone-indicador{
+
+    width:54px;
+    height:54px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    border-radius:13px;
+
+    font-size:25px;
+
+}
+
+.icone-indicador.verde{
+
+    background:#e4f3e9;
+
+}
+
+.icone-indicador.azul{
+
+    background:var(--azul-claro);
+
+}
+
+.icone-indicador.amarelo{
+
+    background:var(--dourado-claro);
+
+}
+
+.icone-indicador.vermelho{
+
+    background:var(--vermelho-claro);
+
+}
+
+.indicador > div:last-child{
+
+    min-width:0;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:4px;
+
+}
+
+.indicador span{
+
+    color:var(--cinza-texto);
+
+    font-size:13px;
+    line-height:20px;
+
+}
+
+.indicador strong{
+
+    color:#18452f;
+
+    font-size:28px;
+
+}
+
+
+/*=========================================================
+    DASHBOARD
+=========================================================*/
+
+.grade-dashboard{
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1.7fr)
+        minmax(300px,1fr);
+
+    gap:22px;
+
+}
+
+.painel{
+
+    min-width:0;
+
+    padding:23px;
+
+    background:var(--branco);
+
+    border-radius:16px;
+
+    box-shadow:var(--sombra);
+
+}
+
+.cabecalho-painel{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin-bottom:21px;
+
+}
+
+.cabecalho-painel span{
+
+    color:var(--dourado);
+
+    font-size:11px;
+    font-weight:700;
+
+    letter-spacing:1.7px;
+
+}
+
+.cabecalho-painel h3{
+
+    margin-top:5px;
+
+    color:#18452f;
+
+    font-size:20px;
+
+}
+
+
+/*=========================================================
+    TABELAS
+=========================================================*/
+
+.tabela-container{
+
+    width:100%;
+
+    overflow-x:auto;
+
+}
+
+.tabela-admin{
+
+    width:100%;
+
+    min-width:700px;
+
+    border-collapse:collapse;
+
+}
+
+.tabela-admin thead{
+
+    background:#f4f7f5;
+
+}
+
+.tabela-admin th{
+
+    padding:14px 15px;
+
+    color:#425148;
+
+    font-size:13px;
+    font-weight:700;
+
+    text-align:left;
+
+    white-space:nowrap;
+
+}
+
+.tabela-admin td{
+
+    padding:15px;
+
+    border-bottom:
+        1px solid #e7ece8;
+
+    color:#59645d;
+
+    font-size:14px;
+
+    vertical-align:middle;
+
+}
+
+.tabela-admin tbody tr{
+
+    transition:background .2s ease;
+
+}
+
+.tabela-admin tbody tr:hover{
+
+    background:#fafcfb;
+
+}
+
+.tabela-admin tbody tr:last-child td{
+
+    border-bottom:none;
+
+}
+
+.tabela-admin td strong{
+
+    color:#30493a;
+
+}
+
+.tabela-admin td small{
+
+    color:#78827c;
+
+}
+
+
+/*=========================================================
+    STATUS
+=========================================================*/
+
+.status{
+
+    display:inline-flex;
+    align-items:center;
+
+    padding:6px 10px;
+
+    border-radius:20px;
+
+    font-size:12px;
+    font-weight:700;
+
+    white-space:nowrap;
+
+}
+
+.status-pendente{
+
+    background:var(--dourado-claro);
+
+    color:#8a6500;
+
+}
+
+.status-aprovada,
+.status-disponivel{
+
+    background:#e4f4e9;
+
+    color:var(--verde-principal);
+
+}
+
+.status-recusada,
+.status-indisponivel{
+
+    background:var(--vermelho-claro);
+
+    color:var(--vermelho);
+
+}
+
+.status-entregue{
+
+    background:var(--azul-claro);
+
+    color:var(--azul);
+
+}
+
+.status-baixo{
+
+    background:var(--dourado-claro);
+
+    color:#8a6500;
+
+}
+
+
+/*=========================================================
+    AÇÕES DAS TABELAS
+=========================================================*/
+
+.acoes-tabela{
+
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.btn-acao{
+
+    padding:7px 10px;
+
+    border:none;
+    border-radius:7px;
+
+    font-size:12px;
+    font-weight:600;
+
+    transition:.2s;
+
+}
+
+.btn-editar{
+
+    background:var(--azul-claro);
+
+    color:var(--azul);
+
+}
+
+.btn-editar:hover{
+
+    background:#d2e2f1;
+
+}
+
+.btn-excluir{
+
+    background:var(--vermelho-claro);
+
+    color:var(--vermelho);
+
+}
+
+.btn-excluir:hover{
+
+    background:#f4d4cf;
+
+}
+
+.btn-visualizar{
+
+    background:var(--verde-claro);
+
+    color:var(--verde-principal);
+
+}
+
+.btn-visualizar:hover{
+
+    background:#d7eadc;
+
+}
+
+
+/*=========================================================
+    ALERTAS DO DASHBOARD
+=========================================================*/
+
+.lista-alertas{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.item-alerta{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:14px 15px;
+
+    background:#fffaf0;
+
+    border-left:
+        4px solid var(--dourado);
+
+    border-radius:10px;
+
+}
+
+.item-alerta strong{
+
+    display:block;
+
+    margin-bottom:3px;
+
+    color:#18452f;
+
+    font-size:14px;
+
+}
+
+.item-alerta span{
+
+    color:#7a6a35;
+
+    font-size:13px;
+
+}
+
+.quantidade-alerta{
+
+    flex-shrink:0;
+
+    padding:6px 9px;
+
+    border-radius:18px;
+
+    background:#fff0bf;
+
+    color:#8a6500;
+
+    font-size:12px;
+    font-weight:700;
+
+}
+
+
+/*=========================================================
+    FILTROS
+=========================================================*/
+
+.barra-filtros{
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    margin-bottom:20px;
+    padding:19px;
+
+    background:var(--branco);
+
+    border-radius:14px;
+
+    box-shadow:
+        0 7px 24px rgba(0,0,0,.05);
+
+}
+
+.barra-filtros input,
+.barra-filtros select{
+
+    min-width:220px;
+
+    padding:12px 14px;
+
+    border:
+        1px solid #d2ddd5;
+
+    border-radius:9px;
+
+    background:#ffffff;
+
+    color:#455249;
+
+    font-size:14px;
+
+    outline:none;
+
+    transition:.25s;
+
+}
+
+.barra-filtros input{
+
+    flex:1;
+
+}
+
+.barra-filtros input:focus,
+.barra-filtros select:focus{
+
+    border-color:var(--verde-principal);
+
+    box-shadow:
+        0 0 0 3px rgba(29,107,69,.1);
+
+}
+
+
+/*=========================================================
+    MENSAGENS VAZIAS
+=========================================================*/
+
+.mensagem-vazia{
+
+    padding:28px;
+
+    color:#737e77;
+
+    text-align:center;
+
+}
+
+
+/*=========================================================
+    MÓDULOS FUTUROS
+=========================================================*/
+
+.modulo-futuro{
+
+    min-height:370px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    padding:50px;
+
+    background:var(--branco);
+
+    border-radius:16px;
+
+    color:#67736b;
+
+    text-align:center;
+
+    box-shadow:var(--sombra);
+
+}
+
+.modulo-futuro > span{
+
+    margin-bottom:16px;
+
+    font-size:55px;
+
+}
+
+.modulo-futuro h3{
+
+    margin-bottom:10px;
+
+    color:#18452f;
+
+    font-size:23px;
+
+}
+
+.modulo-futuro p{
+
+    max-width:550px;
+
+    line-height:26px;
+
+}
+
+
+/*=========================================================
+    MODAL
+=========================================================*/
+
+.modal-admin{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:2000;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.6);
+
+    backdrop-filter:blur(4px);
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+
+}
+
+.modal-admin.ativo{
+
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+
+}
+
+.modal-conteudo{
+
+    position:relative;
+
+    width:100%;
+    max-width:720px;
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    padding:38px;
+
+    background:#ffffff;
+
+    border-radius:19px;
+
+    box-shadow:
+        0 25px 65px rgba(0,0,0,.3);
+
+    transform:
+        translateY(-25px)
+        scale(.98);
+
+    transition:transform .3s ease;
+
+}
+
+.modal-admin.ativo .modal-conteudo{
+
+    transform:
+        translateY(0)
+        scale(1);
+
+}
+
+.btn-fechar-modal{
+
+    position:absolute;
+
+    top:14px;
+    right:18px;
+
+    width:42px;
+    height:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:none;
+    border-radius:50%;
+
+    background:transparent;
+
+    color:#6f7972;
+
+    font-size:34px;
+
+}
+
+.btn-fechar-modal:hover{
+
+    background:#f5e8e6;
+
+    color:var(--vermelho);
+
+}
+
+.subtitulo-modal{
+
+    display:inline-block;
+
+    margin-bottom:8px;
+
+    color:var(--dourado);
+
+    font-size:12px;
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+.modal-conteudo h2{
+
+    padding-right:45px;
+    margin-bottom:26px;
+
+    color:#18452f;
+
+    font-size:27px;
+
+}
+
+
+/*=========================================================
+    FORMULÁRIO
+=========================================================*/
+
+.grade-formulario{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:18px;
+
+}
+
+.campo-formulario{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.campo-completo{
+
+    grid-column:span 2;
+
+}
+
+.campo-formulario label{
+
+    color:#30483a;
+
+    font-size:13px;
+    font-weight:600;
+
+}
+
+.campo-formulario input,
+.campo-formulario select{
+
+    width:100%;
+
+    padding:12px 13px;
+
+    border:
+        1px solid #ccd8cf;
+
+    border-radius:8px;
+
+    background:#ffffff;
+
+    color:#445148;
+
+    font-size:14px;
+
+    outline:none;
+
+    transition:.25s;
+
+}
+
+.campo-formulario input:focus,
+.campo-formulario select:focus{
+
+    border-color:var(--verde-principal);
+
+    box-shadow:
+        0 0 0 3px rgba(29,107,69,.1);
+
+}
+
+
+/*=========================================================
+    MENSAGENS DO FORMULÁRIO
+=========================================================*/
+
+.mensagem-formulario{
+
+    display:none;
+
+    margin-top:20px;
+    padding:13px 15px;
+
+    border-radius:9px;
+
+    font-size:14px;
+    line-height:22px;
+
+}
+
+.mensagem-formulario.erro{
+
+    display:block;
+
+    background:#fdecea;
+
+    border:
+        1px solid #efbbb5;
+
+    color:var(--vermelho);
+
+}
+
+.mensagem-formulario.sucesso{
+
+    display:block;
+
+    background:#e7f5eb;
+
+    border:
+        1px solid #afd8ba;
+
+    color:var(--verde-principal);
+
+}
+
+.acoes-modal{
+
+    display:flex;
+    justify-content:flex-end;
+
+    gap:12px;
+
+    margin-top:26px;
+
+}
+
+
+/*=========================================================
+    RESPONSIVIDADE
+=========================================================*/
+
+@media(max-width:1180px){
+
+    .grade-indicadores{
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+
+    }
+
+    .grade-dashboard{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:900px){
+
+    .menu-lateral{
+
+        transform:translateX(-100%);
+
+        transition:transform .3s ease;
+
+    }
+
+    .menu-lateral.aberto{
+
+        transform:translateX(0);
+
+    }
+
+    .conteudo-principal{
+
+        margin-left:0;
+
+        padding:20px;
+
+    }
+
+    .btn-abrir-menu{
+
+        display:flex;
+
+    }
+
+    .cabecalho-pagina{
+
+        align-items:flex-start;
+        flex-direction:column;
+
+    }
+
+    .cabecalho-pagina > p{
+
+        text-align:left;
+
+    }
+
+}
+
+@media(max-width:650px){
+
+    .topo-admin{
+
+        align-items:flex-start;
+        flex-direction:column;
+
+    }
+
+    .perfil-admin{
+
+        width:100%;
+
+        padding-top:15px;
+
+        border-top:
+            1px solid #e7ece8;
+
+    }
+
+    .grade-indicadores{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .cabecalho-pagina h2{
+
+        font-size:26px;
+
+    }
+
+    .cabecalho-pagina.com-acao
+    .btn-principal{
+
+        width:100%;
+
+    }
+
+    .barra-filtros{
+
+        flex-direction:column;
+
+    }
+
+    .barra-filtros input,
+    .barra-filtros select{
+
+        width:100%;
+        min-width:0;
+
+    }
+
+    .grade-formulario{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .campo-completo{
+
+        grid-column:auto;
+
+    }
+
+    .acoes-modal{
+
+        flex-direction:column-reverse;
+
+    }
+
+    .acoes-modal button{
+
+        width:100%;
+
+    }
+
+    .modal-conteudo{
+
+        padding:32px 20px;
+
+    }
+
+}
+
+@media(max-width:430px){
+
+    .conteudo-principal{
+
+        padding:12px;
+
+    }
+
+    .topo-admin,
+    .painel,
+    .indicador{
+
+        border-radius:12px;
+
+    }
+
+    .topo-esquerda h1{
+
+        font-size:24px;
+
+    }
+
+    .painel{
+
+        padding:18px;
+
+    }
+
+    .marca-admin img{
+
+        width:54px;
+        height:54px;
+
+    }
+
+}
+
+/*=========================================================
+    MÓDULO DE DOAÇÕES
+=========================================================*/
+
+.descricao-pagina{
+
+    margin-top:10px;
+
+    max-width:650px;
+
+    color:var(--cinza-texto);
+
+    font-size:15px;
+
+    line-height:25px;
+
+}
+
+.grade-indicadores-doacoes{
+
+    margin-top:8px;
+
+}
+
+
+/*=========================================================
+    CAMPO DE OBSERVAÇÕES
+=========================================================*/
+
+.campo-formulario textarea{
+
+    width:100%;
+
+    min-height:120px;
+
+    padding:12px 13px;
+
+    resize:vertical;
+
+    border:
+        1px solid #ccd8cf;
+
+    border-radius:8px;
+
+    background:#ffffff;
+
+    color:#445148;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:14px;
+
+    line-height:23px;
+
+    outline:none;
+
+    transition:.25s;
+
+}
+
+.campo-formulario textarea:focus{
+
+    border-color:var(--verde-principal);
+
+    box-shadow:
+        0 0 0 3px rgba(29,107,69,.1);
+
+}
+
+
+/*=========================================================
+    STATUS DAS DOAÇÕES
+=========================================================*/
+
+.status-triagem{
+
+    background:var(--dourado-claro);
+
+    color:#8a6500;
+
+}
+
+.status-recebida{
+
+    background:var(--azul-claro);
+
+    color:var(--azul);
+
+}
+
+
+/*=========================================================
+    AÇÕES DAS DOAÇÕES
+=========================================================*/
+
+.btn-aprovar{
+
+    background:var(--verde-claro);
+
+    color:var(--verde-principal);
+
+}
+
+.btn-aprovar:hover{
+
+    background:#d7eadc;
+
+}
+
+.btn-recusar{
+
+    background:var(--vermelho-claro);
+
+    color:var(--vermelho);
+
+}
+
+.btn-recusar:hover{
+
+    background:#f4d4cf;
+
+}
+
+.btn-receber{
+
+    background:var(--azul-claro);
+
+    color:var(--azul);
+
+}
+
+.btn-receber:hover{
+
+    background:#d2e2f1;
+
+}
+
+/*=========================================================
+    MODAL DE DETALHES DA DOAÇÃO
+=========================================================*/
+
+.modal-detalhes-doacao{
+
+    max-width:900px;
+
+}
+
+.cabecalho-detalhes-doacao{
+
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+
+    gap:24px;
+
+    margin-bottom:28px;
+
+}
+
+.cabecalho-detalhes-doacao h2{
+
+    margin-bottom:7px;
+
+}
+
+.cabecalho-detalhes-doacao p{
+
+    color:var(--cinza-texto);
+
+    font-size:14px;
+
+}
+
+
+/*=========================================================
+    BLOCOS DE INFORMAÇÕES
+=========================================================*/
+
+.bloco-detalhes-doacao{
+
+    margin-bottom:22px;
+    padding:22px;
+
+    background:#f8faf8;
+
+    border:1px solid #e0e8e2;
+    border-radius:14px;
+
+}
+
+.titulo-bloco-detalhes{
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:18px;
+
+}
+
+.titulo-bloco-detalhes > span{
+
+    font-size:22px;
+
+}
+
+.titulo-bloco-detalhes h3{
+
+    color:#18452f;
+
+    font-size:18px;
+
+}
+
+
+/*=========================================================
+    GRADE DOS DETALHES
+=========================================================*/
+
+.grade-detalhes-doacao{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:16px;
+
+}
+
+.campo-detalhe{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:6px;
+
+    padding:15px;
+
+    background:#ffffff;
+
+    border:1px solid #e1e8e3;
+    border-radius:10px;
+
+}
+
+.campo-detalhe-completo{
+
+    grid-column:span 2;
+
+}
+
+.campo-detalhe span{
+
+    color:#748078;
+
+    font-size:12px;
+    font-weight:600;
+
+    text-transform:uppercase;
+    letter-spacing:.6px;
+
+}
+
+.campo-detalhe strong{
+
+    color:#30483a;
+
+    font-size:14px;
+    line-height:22px;
+
+}
+
+
+/*=========================================================
+    ENDEREÇO
+=========================================================*/
+
+.endereco-detalhes-doacao{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:6px;
+
+    padding:17px;
+
+    background:#ffffff;
+
+    border:1px solid #e1e8e3;
+    border-left:4px solid var(--verde-principal);
+
+    border-radius:10px;
+
+}
+
+.endereco-detalhes-doacao strong{
+
+    color:#18452f;
+
+    font-size:15px;
+    line-height:23px;
+
+}
+
+.endereco-detalhes-doacao span{
+
+    color:#69746d;
+
+    font-size:14px;
+    line-height:22px;
+
+}
+
+
+/*=========================================================
+    OBSERVAÇÕES
+=========================================================*/
+
+.texto-observacoes-doacao{
+
+    padding:16px;
+
+    background:#ffffff;
+
+    border:1px solid #e1e8e3;
+    border-radius:10px;
+
+    color:#56635b;
+
+    font-size:14px;
+    line-height:24px;
+
+    white-space:pre-line;
+
+}
+
+
+/*=========================================================
+    CAMPO DE TEXTO DA COLETA
+=========================================================*/
+
+.modal-detalhes-doacao textarea{
+
+    width:100%;
+
+    min-height:100px;
+
+    padding:12px 13px;
+
+    resize:vertical;
+
+    border:1px solid #ccd8cf;
+    border-radius:8px;
+
+    background:#ffffff;
+
+    color:#445148;
+
+    font-family:'Poppins',sans-serif;
+    font-size:14px;
+    line-height:23px;
+
+    outline:none;
+
+    transition:.25s;
+
+}
+
+.modal-detalhes-doacao textarea:focus{
+
+    border-color:var(--verde-principal);
+
+    box-shadow:
+        0 0 0 3px rgba(29,107,69,.10);
+
+}
+
+
+/*=========================================================
+    AÇÕES DOS DETALHES
+=========================================================*/
+
+.acoes-detalhes-doacao{
+
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+
+    gap:12px;
+
+    margin-top:8px;
+
+}
+
+.btn-acao-detalhe{
+
+    padding:13px 18px;
+
+    border:none;
+    border-radius:9px;
+
+    font-size:14px;
+    font-weight:700;
+
+    transition:.25s;
+
+}
+
+.btn-acao-detalhe:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.btn-agendar-coleta{
+
+    background:#fff4d3;
+
+    color:#8a6500;
+
+}
+
+.btn-agendar-coleta:hover{
+
+    background:#f9e9ae;
+
+}
+
+
+/*=========================================================
+    VISIBILIDADE CONFORME STATUS
+=========================================================*/
+
+.btn-acao-detalhe[hidden]{
+
+    display:none !important;
+
+}
+
+
+/*=========================================================
+    RESPONSIVIDADE
+=========================================================*/
+
+@media(max-width:700px){
+
+    .cabecalho-detalhes-doacao{
+
+        flex-direction:column;
+
+    }
+
+    .grade-detalhes-doacao{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .campo-detalhe-completo{
+
+        grid-column:auto;
+
+    }
+
+    .acoes-detalhes-doacao{
+
+        flex-direction:column;
+
+    }
+
+    .btn-acao-detalhe{
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .bloco-detalhes-doacao{
+
+        padding:17px;
+
+    }
+
+    .modal-detalhes-doacao{
+
+        padding:30px 18px;
+
+    }
+
+}

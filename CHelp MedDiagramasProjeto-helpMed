@@ -1,0 +1,29 @@
+[33mcommit 0d841d45a938fe98b3589ca324f3bc88e1048772[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mteste[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32minclusão-adm-doacao[m[33m)[m
+Author: Maikel Zanchi <mzanchiti@outlook.com>
+Date:   Mon Aug 3 16:02:21 2026 -0300
+
+    Inserção de novas paginas e funcionalidades
+    
+    Criação medicamentos.js solicitar.js
+
+[33mcommit c136c3b9ea13c6f31431fc48aab276e4e640dc8e[m
+Author: Maikel Zanchi <mzanchiti@outlook.com>
+Date:   Sun Aug 2 20:31:45 2026 -0300
+
+    Criação-quem-somos.html
+    
+    Criação da seção Quem Somos, .html e .css
+
+[33mcommit cafda5229d6c38fe9469c6e3ad50497fe86a7809[m
+Author: Maikel Zanchi <mzanchiti@outlook.com>
+Date:   Sat Aug 1 14:49:51 2026 -0300
+
+    Primeira versão do site Help Med
+    
+    Projeto inicial contendo estrutura HTML, CSS, JavaScript e imagens.
+
+[33mcommit c8ed55038e1b3456435e11e8669d66b178433157[m
+Author: Maikel Zanchi <mzanchiti@outlook.com>
+Date:   Sat Aug 1 12:13:47 2026 -0300
+
+    Initial commit

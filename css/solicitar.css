@@ -39,183 +39,272 @@ body{
 
 section{
 
-    padding:80px 0;
+    padding:60px 0;
 
 }
 
-/*=========================
-BANNER
-=========================*/
+/*======================================================
+    APRESENTAÇÃO DA PÁGINA SOLICITAR
+======================================================*/
 
 .banner-solicitar{
 
-    background:linear-gradient(135deg,#18452F,#2D7A54);
+    position:relative;
 
-    color:white;
+    display:block;
 
-    min-height:420px;
+    padding:58px 0 46px;
 
-    display:flex;
+    overflow:hidden;
 
-    align-items:center;
+    background:
+        linear-gradient(
+            135deg,
+            #edf7f1 0%,
+            #f8fbf9 55%,
+            #fff9e8 100%
+        );
+
+    border-bottom:1px solid #dfe9e2;
 
 }
+
+
+/* Elemento decorativo */
+
+.banner-solicitar::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-130px;
+    right:-100px;
+
+    width:380px;
+    height:380px;
+
+    border-radius:50%;
+
+    background:
+        rgba(29,107,69,.06);
+
+    pointer-events:none;
+
+}
+
 
 .banner-texto{
 
-    max-width:720px;
+    position:relative;
+
+    z-index:1;
+
+    width:90%;
+    max-width:1300px;
+
+    margin:0 auto;
 
 }
+
 
 .banner-texto span{
 
-    display:inline-block;
+    display:inline-flex;
+    align-items:center;
 
-    color:#FFD166;
+    margin-bottom:13px;
 
-    font-size:15px;
+    color:#b37d00;
+
+    font-size:13px;
+    font-weight:700;
 
     letter-spacing:2px;
-
-    font-weight:600;
-
-    margin-bottom:18px;
+    text-transform:uppercase;
 
 }
+
 
 .banner-texto h1{
 
-    font-size:56px;
+    max-width:780px;
 
-    line-height:66px;
+    margin:0 0 18px;
 
-    margin-bottom:25px;
+    color:#173f2a;
+
+    font-size:50px;
+    line-height:1.14;
 
 }
+
 
 .banner-texto p{
 
-    font-size:20px;
+    max-width:760px;
 
-    line-height:34px;
+    margin:0;
 
-    color:#edf5ef;
+    color:#4d6455;
+
+    font-size:17px;
+    font-weight:400;
+
+    line-height:1.75;
+
+    opacity:1;
+    visibility:visible;
 
 }
 
-/*=========================
-TÍTULOS
-=========================*/
+/*======================================================
+    TÍTULOS DAS SEÇÕES
+======================================================*/
 
 .titulo-secao{
 
+    max-width:760px;
+
+    margin:0 auto 28px;
+
     text-align:center;
 
-    margin-bottom:45px;
-
 }
+
 
 .titulo-secao span{
 
-    color:#D4A017;
+    display:inline-block;
 
-    font-weight:600;
+    margin-bottom:8px;
+
+    color:#b37d00;
+
+    font-size:13px;
+    font-weight:700;
 
     letter-spacing:2px;
+    text-transform:uppercase;
 
 }
+
 
 .titulo-secao h2{
 
-    margin-top:15px;
+    margin:0;
 
-    font-size:40px;
+    color:#18452f;
 
-    color:#18452F;
+    font-size:36px;
+    line-height:1.25;
 
 }
+
 
 .linha{
 
-    width:90px;
-
+    width:72px;
     height:4px;
 
-    background:#D4A017;
+    margin:14px auto 0;
 
-    margin:18px auto;
-
+    border:none;
     border-radius:20px;
+
+    background:#d4a017;
 
 }
 
-/*=========================
-PESQUISA
-=========================*/
+/*======================================================
+    PESQUISA DE MEDICAMENTOS
+======================================================*/
 
 .barra-pesquisa{
 
-    display:flex;
+    width:100%;
+    max-width:900px;
 
-    gap:18px;
+    display:grid;
 
-    justify-content:center;
+    grid-template-columns:
+        minmax(0,1fr)
+        auto;
 
-    align-items:center;
+    gap:12px;
 
-    margin-top:40px;
+    margin:0 auto;
 
 }
+
 
 .barra-pesquisa input{
 
-    flex:1;
+    width:100%;
 
-    max-width:750px;
+    padding:16px 20px;
 
-    padding:18px 24px;
+    border:1px solid #cddbd1;
+    border-radius:11px;
 
-    border-radius:12px;
+    background:#ffffff;
 
-    border:2px solid #d6dfd7;
+    color:#34483b;
 
-    font-size:18px;
-
-    transition:.30s;
+    font-family:'Poppins',sans-serif;
+    font-size:16px;
 
     outline:none;
 
+    transition:
+        border-color .25s,
+        box-shadow .25s;
+
 }
+
+
+.barra-pesquisa input::placeholder{
+
+    color:#8b978f;
+
+}
+
 
 .barra-pesquisa input:focus{
 
-    border-color:#1D6B45;
+    border-color:#1d6b45;
 
-    box-shadow:0 0 15px rgba(29,107,69,.20);
+    box-shadow:
+        0 0 0 4px rgba(29,107,69,.11);
 
 }
+
 
 .barra-pesquisa button{
 
-    background:#1D6B45;
+    min-width:145px;
 
-    color:white;
+    padding:16px 25px;
 
     border:none;
+    border-radius:11px;
 
-    padding:18px 35px;
+    background:#1d6b45;
+    color:#ffffff;
 
-    border-radius:12px;
+    font-family:'Poppins',sans-serif;
+    font-size:15px;
+    font-weight:700;
 
     cursor:pointer;
 
-    font-size:17px;
-
-    font-weight:600;
-
-    transition:.30s;
+    transition:
+        background .25s,
+        transform .25s,
+        box-shadow .25s;
 
 }
+
 
 .barra-pesquisa button:hover{
 
@@ -223,31 +312,44 @@ PESQUISA
 
     transform:translateY(-2px);
 
+    box-shadow:
+        0 8px 18px rgba(29,107,69,.18);
+
 }
 
-/*=========================
-FILTROS
-=========================*/
+/*======================================================
+    ÁREA DE PESQUISA E FILTROS
+======================================================*/
 
 .filtros{
 
-    background:white;
+    padding:38px 0 42px;
 
-    box-shadow:0 8px 25px rgba(0,0,0,.06);
+    background:#ffffff;
+
+    border-bottom:1px solid #e1e9e3;
+
+    box-shadow:
+        0 8px 24px rgba(24,69,47,.04);
 
 }
+
 
 .filtros .container{
 
-    display:flex;
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,minmax(180px,240px));
 
     justify-content:center;
 
-    gap:35px;
+    gap:18px;
 
-    flex-wrap:wrap;
+    margin-top:28px;
 
 }
+
 
 .filtro{
 
@@ -255,51 +357,60 @@ FILTROS
 
     flex-direction:column;
 
+    gap:8px;
+
 }
+
 
 .filtro label{
 
-    font-weight:600;
+    margin:0;
 
-    margin-bottom:10px;
+    color:#18452f;
 
-    color:#18452F;
+    font-size:13px;
+    font-weight:700;
 
 }
+
 
 .filtro select{
 
-    width:240px;
+    width:100%;
 
-    padding:14px;
+    padding:13px 14px;
 
-    border-radius:10px;
+    border:1px solid #cfdad2;
+    border-radius:9px;
 
-    border:2px solid #d7e1da;
+    background:#ffffff;
+    color:#425348;
 
-    background:white;
-
-    font-size:16px;
+    font-family:'Poppins',sans-serif;
+    font-size:14px;
 
     cursor:pointer;
+    outline:none;
 
-    transition:.30s;
+    transition:
+        border-color .25s,
+        box-shadow .25s;
+
+}
+
+
+.filtro select:hover,
+.filtro select:focus{
+
+    border-color:#1d6b45;
 
 }
 
-.filtro select:hover{
-
-    border-color:#1D6B45;
-
-}
 
 .filtro select:focus{
 
-    outline:none;
-
-    border-color:#1D6B45;
-
-    box-shadow:0 0 10px rgba(29,107,69,.15);
+    box-shadow:
+        0 0 0 3px rgba(29,107,69,.10);
 
 }
 
@@ -311,11 +422,19 @@ FILTROS
 
     display:grid;
 
-    grid-template-columns:3fr 1.2fr;
-
-    gap:35px;
+    grid-template-columns:
+        minmax(0,1fr)
+        minmax(300px,370px);
 
     align-items:start;
+
+    gap:28px;
+
+}
+
+.lista-medicamentos{
+
+    min-width:0;
 
 }
 
@@ -325,11 +444,12 @@ LISTA DE MEDICAMENTOS
 
 .lista-medicamentos h2{
 
-    color:#18452F;
+    margin-bottom:22px;
 
-    margin-bottom:30px;
+    color:#18452f;
 
-    font-size:32px;
+    font-size:28px;
+    line-height:1.3;
 
 }
 
@@ -911,29 +1031,43 @@ RESPONSIVIDADE - SMARTPHONES
 
 @media(max-width:768px){
 
+    @media(max-width:768px){
+
+    .banner-solicitar{
+
+        padding:42px 0 36px;
+
+    }
+
     .banner-texto h1{
 
-        font-size:38px;
-
-        line-height:48px;
+        font-size:37px;
+        line-height:1.2;
 
     }
 
     .banner-texto p{
 
-        font-size:17px;
+        font-size:16px;
+        line-height:1.7;
+
+    }
+
+    .titulo-secao{
+
+        margin-bottom:23px;
+
+    }
+
+    .titulo-secao h2{
+
+        font-size:30px;
 
     }
 
     .barra-pesquisa{
 
-        flex-direction:column;
-
-    }
-
-    .barra-pesquisa input{
-
-        width:100%;
+        grid-template-columns:1fr;
 
     }
 
@@ -943,15 +1077,29 @@ RESPONSIVIDADE - SMARTPHONES
 
     }
 
+    .filtros{
+
+        padding:32px 0 36px;
+
+    }
+
     .filtros .container{
 
-        flex-direction:column;
+        grid-template-columns:1fr;
 
-        align-items:center;
+        max-width:430px;
 
     }
 
     .filtro{
+
+        width:100%;
+
+    }
+
+}
+
+/*    .filtro{
 
         width:100%;
 
@@ -963,7 +1111,7 @@ RESPONSIVIDADE - SMARTPHONES
 
         width:100%;
 
-    }
+    }*/
 
     #medicamentos{
 
@@ -987,6 +1135,16 @@ RESPONSIVIDADE - SMARTPHONES
 
 }
 
+@media(max-width:900px){
+
+    .layout-solicitacao{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
 /*======================================================
 RESPONSIVIDADE - CELULARES PEQUENOS
 ======================================================*/
@@ -995,11 +1153,21 @@ RESPONSIVIDADE - CELULARES PEQUENOS
 
     .banner-texto h1{
 
-        font-size:30px;
+    font-size:31px;
 
-        line-height:38px;
+    line-height:1.22;
 
     }
+
+@media(max-width:768px){
+
+    :root{
+
+    --altura-cabecalho: 82px;
+
+    }
+
+}
 
     .titulo-secao h2{
 
@@ -1025,65 +1193,89 @@ RESPONSIVIDADE - CELULARES PEQUENOS
 MODAL DE MEDICAMENTO
 ======================================================*/
 
-.modal{
+/*======================================================
+MODAL DE DETALHES
+======================================================*/
 
-    display:none;
+.modal{
 
     position:fixed;
 
-    z-index:999;
+    inset:0;
 
-    left:0;
+    z-index:9999;
 
-    top:0;
+    display:flex;
 
-    width:100%;
+    align-items:center;
 
-    height:100%;
+    justify-content:center;
 
-    background:rgba(0,0,0,.55);
+    padding:24px;
+
+    background:rgba(0,0,0,.58);
 
     backdrop-filter:blur(4px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+
+}
+
+.modal.ativo{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
 
 }
 
 .modal-conteudo{
 
-    background:white;
+    position:relative;
 
-    width:90%;
+    width:100%;
 
     max-width:700px;
 
-    margin:70px auto;
+    max-height:90vh;
 
-    border-radius:20px;
+    overflow-y:auto;
+
+    margin:0;
 
     padding:40px;
 
-    position:relative;
+    background:#ffffff;
 
-    animation:modalEntrada .35s ease;
+    border-radius:20px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.28);
+
+    transform:translateY(-25px) scale(.97);
+
+    transition:transform .3s ease;
 
 }
 
-@keyframes modalEntrada{
+.modal.ativo .modal-conteudo{
 
-    from{
+    transform:translateY(0) scale(1);
 
-        opacity:0;
+}
 
-        transform:translateY(-40px);
+.modal-aberto{
 
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
+    overflow:hidden;
 
 }
 
@@ -1091,29 +1283,54 @@ MODAL DE MEDICAMENTO
 
     position:absolute;
 
-    right:25px;
+    top:14px;
 
-    top:18px;
+    right:20px;
 
-    font-size:34px;
+    z-index:2;
+
+    width:44px;
+
+    height:44px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:transparent;
+
+    color:#666;
+
+    font-size:36px;
+
+    line-height:1;
 
     cursor:pointer;
 
-    color:#777;
+    display:flex;
 
-    transition:.3s;
+    align-items:center;
+
+    justify-content:center;
 
 }
 
-.fechar-modal:hover{
+.fechar-modal:hover,
+.fechar-modal:focus{
 
-    color:#C0392B;
+    background:#f4e9e7;
+
+    color:#c0392b;
+
+    outline:none;
 
 }
 
 .modal-conteudo h2{
 
-    color:#18452F;
+    padding-right:50px;
+
+    color:#18452f;
 
     margin-bottom:25px;
 
@@ -1121,9 +1338,11 @@ MODAL DE MEDICAMENTO
 
 .modal-conteudo p{
 
-    line-height:32px;
+    line-height:30px;
 
-    margin-bottom:15px;
+    margin-bottom:14px;
+
+    color:#555;
 
 }
 
@@ -1141,10 +1360,1130 @@ MODAL DE MEDICAMENTO
 
 .modal-box{
 
-    background:#f4f7f5;
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
 
     padding:20px;
 
+    background:#f4f7f5;
+
     border-radius:12px;
+
+}
+
+@media(max-width:600px){
+
+    .modal{
+
+        padding:14px;
+
+    }
+
+    .modal-conteudo{
+
+        padding:32px 22px;
+
+    }
+
+    .modal-info{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+.sem-receita{
+
+    background:#6c757d;
+
+}
+
+.acoes-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-top:20px;
+
+}
+
+.btn-adicionar:disabled{
+
+    background:#a9b3ad;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+    opacity:.75;
+
+}
+
+.mensagem-vazia{
+
+    grid-column:1 / -1;
+
+    background:#ffffff;
+
+    padding:35px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    color:#666;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+
+}
+
+/*======================================================
+MODAL DE FINALIZAÇÃO DA SOLICITAÇÃO
+======================================================*/
+
+.modal-finalizacao{
+
+    position:fixed;
+    inset:0;
+    z-index:10000;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:24px;
+
+    background:rgba(0,0,0,.62);
+    backdrop-filter:blur(5px);
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+
+}
+
+.modal-finalizacao.ativo{
+
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+
+}
+
+.finalizacao-conteudo{
+
+    position:relative;
+
+    width:100%;
+    max-width:900px;
+    max-height:92vh;
+
+    overflow-y:auto;
+
+    padding:42px;
+
+    background:#ffffff;
+
+    border-radius:22px;
+
+    box-shadow:0 28px 70px rgba(0,0,0,.30);
+
+    transform:translateY(-25px) scale(.98);
+
+    transition:transform .3s ease;
+
+}
+
+.modal-finalizacao.ativo .finalizacao-conteudo{
+
+    transform:translateY(0) scale(1);
+
+}
+
+
+/*======================================================
+BOTÃO FECHAR
+======================================================*/
+
+.fechar-finalizacao{
+
+    position:absolute;
+
+    top:16px;
+    right:20px;
+
+    z-index:2;
+
+    width:44px;
+    height:44px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:none;
+    border-radius:50%;
+
+    background:transparent;
+
+    color:#666;
+
+    font-size:36px;
+    line-height:1;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.fechar-finalizacao:hover,
+.fechar-finalizacao:focus{
+
+    background:#f5e8e6;
+    color:#c0392b;
+
+    outline:none;
+
+}
+
+
+/*======================================================
+CABEÇALHO
+======================================================*/
+
+.finalizacao-cabecalho{
+
+    padding-right:55px;
+    margin-bottom:35px;
+
+}
+
+.finalizacao-cabecalho span{
+
+    display:inline-block;
+
+    margin-bottom:10px;
+
+    color:#d4a017;
+
+    font-size:14px;
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+.finalizacao-cabecalho h2{
+
+    margin-bottom:12px;
+
+    color:#18452f;
+
+    font-size:34px;
+    line-height:1.25;
+
+}
+
+.finalizacao-cabecalho p{
+
+    max-width:720px;
+
+    color:#606b64;
+
+    font-size:16px;
+    line-height:28px;
+
+}
+
+
+/*======================================================
+ETAPAS DA FINALIZAÇÃO
+======================================================*/
+
+.etapa-finalizacao{
+
+    margin-bottom:26px;
+    padding:26px;
+
+    background:#f8faf8;
+
+    border:1px solid #e1e9e3;
+    border-radius:16px;
+
+}
+
+.etapa-finalizacao h3{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    margin-bottom:22px;
+
+    color:#18452f;
+
+    font-size:21px;
+
+}
+
+.numero-finalizacao{
+
+    width:36px;
+    height:36px;
+
+    flex-shrink:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#1d6b45;
+    color:#ffffff;
+
+    font-size:16px;
+    font-weight:700;
+
+}
+
+
+/*======================================================
+RESUMO DOS MEDICAMENTOS
+======================================================*/
+
+.resumo-finalizacao{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.item-resumo-finalizacao{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:16px 18px;
+
+    background:#ffffff;
+
+    border:1px solid #e3e9e5;
+    border-radius:12px;
+
+}
+
+.item-resumo-finalizacao strong{
+
+    display:block;
+
+    margin-bottom:4px;
+
+    color:#18452f;
+
+}
+
+.item-resumo-finalizacao span{
+
+    color:#667068;
+
+    font-size:14px;
+
+}
+
+.quantidade-resumo{
+
+    flex-shrink:0;
+
+    padding:7px 12px;
+
+    border-radius:20px;
+
+    background:#e7f3eb;
+    color:#1d6b45;
+
+    font-weight:700;
+
+}
+
+.total-finalizacao{
+
+    display:flex;
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin-top:18px;
+    padding-top:18px;
+
+    border-top:2px solid #e1e8e3;
+
+    color:#18452f;
+
+    font-size:18px;
+
+}
+
+
+/*======================================================
+RECEITA MÉDICA
+======================================================*/
+
+.aviso-receita-finalizacao{
+
+    margin-bottom:22px;
+    padding:20px;
+
+    background:#fff8df;
+
+    border-left:5px solid #d4a017;
+    border-radius:10px;
+
+    color:#5f532a;
+
+}
+
+.aviso-receita-finalizacao strong{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#7a6314;
+
+}
+
+.aviso-receita-finalizacao p{
+
+    margin-top:7px;
+
+    line-height:26px;
+
+}
+
+.campo-arquivo{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.campo-arquivo label{
+
+    color:#18452f;
+
+    font-weight:600;
+
+}
+
+.campo-arquivo input[type="file"]{
+
+    padding:14px;
+
+    background:#ffffff;
+
+    border:2px dashed #b9c8bd;
+    border-radius:12px;
+
+    cursor:pointer;
+
+}
+
+.campo-arquivo small{
+
+    color:#6a746d;
+
+}
+
+.nome-arquivo{
+
+    color:#1d6b45;
+
+    font-size:14px;
+    font-weight:600;
+
+}
+
+
+/*======================================================
+FORMA DE RECEBIMENTO
+======================================================*/
+
+.opcoes-recebimento{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+}
+
+.opcao-recebimento{
+
+    display:flex;
+    align-items:flex-start;
+
+    gap:12px;
+
+    padding:20px;
+
+    background:#ffffff;
+
+    border:2px solid #dce5de;
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.opcao-recebimento:hover{
+
+    border-color:#1d6b45;
+
+    transform:translateY(-2px);
+
+}
+
+.opcao-recebimento input{
+
+    margin-top:5px;
+
+    accent-color:#1d6b45;
+
+}
+
+.opcao-conteudo{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:6px;
+
+}
+
+.opcao-conteudo strong{
+
+    color:#18452f;
+
+}
+
+.opcao-conteudo small{
+
+    color:#69736c;
+
+    line-height:22px;
+
+}
+
+
+/*======================================================
+ENDEREÇO
+======================================================*/
+
+.endereco-opcoes{
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:22px;
+
+    margin-bottom:22px;
+
+}
+
+.endereco-opcoes label{
+
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+    color:#425048;
+
+    cursor:pointer;
+
+}
+
+.endereco-opcoes input{
+
+    accent-color:#1d6b45;
+
+}
+
+.formulario-endereco{
+
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+
+    gap:18px;
+
+}
+
+.campo-formulario{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.campo-formulario label{
+
+    color:#18452f;
+
+    font-size:14px;
+    font-weight:600;
+
+}
+
+.campo-formulario input,
+.campo-formulario select{
+
+    width:100%;
+
+    padding:13px 14px;
+
+    background:#ffffff;
+
+    border:1px solid #cfd9d2;
+    border-radius:9px;
+
+    font-family:'Poppins',sans-serif;
+    font-size:15px;
+
+    outline:none;
+
+    transition:.25s;
+
+}
+
+.campo-formulario input:focus,
+.campo-formulario select:focus{
+
+    border-color:#1d6b45;
+
+    box-shadow:0 0 0 3px rgba(29,107,69,.12);
+
+}
+
+.campo-cep{
+
+    grid-column:span 3;
+
+}
+
+.campo-logradouro{
+
+    grid-column:span 7;
+
+}
+
+.campo-numero{
+
+    grid-column:span 2;
+
+}
+
+.campo-complemento{
+
+    grid-column:span 5;
+
+}
+
+.campo-bairro{
+
+    grid-column:span 4;
+
+}
+
+.campo-cidade{
+
+    grid-column:span 5;
+
+}
+
+.campo-estado{
+
+    grid-column:span 3;
+
+}
+
+
+/*======================================================
+TERMO DE CONFIRMAÇÃO
+======================================================*/
+
+.termo-confirmacao{
+
+    display:flex;
+    align-items:flex-start;
+
+    gap:12px;
+
+    cursor:pointer;
+
+}
+
+.termo-confirmacao input{
+
+    width:19px;
+    height:19px;
+
+    flex-shrink:0;
+
+    margin-top:4px;
+
+    accent-color:#1d6b45;
+
+}
+
+.termo-confirmacao span{
+
+    color:#4f5a53;
+
+    line-height:26px;
+
+}
+
+
+/*======================================================
+MENSAGENS DE VALIDAÇÃO
+======================================================*/
+
+.mensagem-finalizacao{
+
+    display:none;
+
+    margin-bottom:22px;
+    padding:15px 18px;
+
+    border-radius:10px;
+
+    font-size:15px;
+    line-height:24px;
+
+}
+
+.mensagem-finalizacao.erro{
+
+    display:block;
+
+    background:#fdecea;
+    border:1px solid #f1b9b3;
+
+    color:#a93226;
+
+}
+
+.mensagem-finalizacao.sucesso{
+
+    display:block;
+
+    background:#e7f6ec;
+    border:1px solid #acd9ba;
+
+    color:#1d6b45;
+
+}
+
+
+/*======================================================
+BOTÕES DA FINALIZAÇÃO
+======================================================*/
+
+.acoes-finalizacao{
+
+    display:flex;
+    justify-content:flex-end;
+
+    gap:15px;
+
+    padding-top:8px;
+
+}
+
+.btn-cancelar-finalizacao,
+.btn-confirmar-finalizacao{
+
+    padding:15px 25px;
+
+    border-radius:10px;
+
+    font-family:'Poppins',sans-serif;
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.btn-cancelar-finalizacao{
+
+    background:#ffffff;
+    color:#4f5b53;
+
+    border:2px solid #cdd7d0;
+
+}
+
+.btn-cancelar-finalizacao:hover{
+
+    border-color:#8d9991;
+
+    background:#f3f5f3;
+
+}
+
+.btn-confirmar-finalizacao{
+
+    border:2px solid #1d6b45;
+
+    background:#1d6b45;
+    color:#ffffff;
+
+}
+
+.btn-confirmar-finalizacao:hover{
+
+    border-color:#155437;
+
+    background:#155437;
+
+    transform:translateY(-2px);
+
+}
+
+
+/*======================================================
+ATRIBUTO HIDDEN
+======================================================*/
+
+.modal-finalizacao [hidden]{
+
+    display:none !important;
+
+}
+
+
+/*======================================================
+RESPONSIVIDADE
+======================================================*/
+
+@media(max-width:768px){
+
+    .modal-finalizacao{
+
+        padding:12px;
+
+        align-items:flex-start;
+
+        overflow-y:auto;
+
+    }
+
+    .finalizacao-conteudo{
+
+        max-height:none;
+
+        margin:12px 0;
+
+        padding:34px 20px;
+
+    }
+
+    .finalizacao-cabecalho h2{
+
+        font-size:28px;
+
+    }
+
+    .etapa-finalizacao{
+
+        padding:20px;
+
+    }
+
+    .opcoes-recebimento{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .formulario-endereco{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .campo-cep,
+    .campo-logradouro,
+    .campo-numero,
+    .campo-complemento,
+    .campo-bairro,
+    .campo-cidade,
+    .campo-estado{
+
+        grid-column:auto;
+
+    }
+
+    .item-resumo-finalizacao{
+
+        align-items:flex-start;
+
+        flex-direction:column;
+
+    }
+
+    .acoes-finalizacao{
+
+        flex-direction:column-reverse;
+
+    }
+
+    .btn-cancelar-finalizacao,
+    .btn-confirmar-finalizacao{
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .finalizacao-cabecalho{
+
+        padding-right:35px;
+
+    }
+
+    .finalizacao-cabecalho h2{
+
+        font-size:25px;
+
+    }
+
+    .etapa-finalizacao h3{
+
+        align-items:flex-start;
+
+        font-size:18px;
+
+    }
+
+    .total-finalizacao{
+
+        flex-direction:column;
+
+        gap:6px;
+
+    }
+
+}
+
+/*=========================================================
+    CESTA LATERAL FIXA
+=========================================================*/
+
+.cesta-solicitacao{
+
+    position:sticky;
+
+    top:105px;
+
+    align-self:start;
+
+    display:flex;
+    flex-direction:column;
+
+    width:100%;
+    max-height:calc(100vh - 125px);
+
+    overflow:hidden;
+
+}
+
+
+/*=========================================================
+    CABEÇALHO DA CESTA
+=========================================================*/
+
+.cabecalho-cesta{
+
+    flex-shrink:0;
+
+    padding-bottom:16px;
+    margin-bottom:14px;
+
+    border-bottom:1px solid #e1e8e3;
+
+}
+
+.cabecalho-cesta h2{
+
+    margin-bottom:6px;
+
+}
+
+.cabecalho-cesta #totalItens{
+
+    color:#657169;
+
+    font-size:14px;
+    font-weight:600;
+
+}
+
+
+/*=========================================================
+    LISTA COM ROLAGEM INDEPENDENTE
+=========================================================*/
+
+.cesta-solicitacao .lista-cesta{
+
+    flex:1;
+
+    min-height:0;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    padding-right:7px;
+
+    scrollbar-width:thin;
+
+}
+
+
+/* Barra de rolagem no Chrome e Edge */
+
+.cesta-solicitacao .lista-cesta::-webkit-scrollbar{
+
+    width:7px;
+
+}
+
+.cesta-solicitacao .lista-cesta::-webkit-scrollbar-track{
+
+    background:#eef2ef;
+
+    border-radius:10px;
+
+}
+
+.cesta-solicitacao .lista-cesta::-webkit-scrollbar-thumb{
+
+    background:#a8bbae;
+
+    border-radius:10px;
+
+}
+
+.cesta-solicitacao .lista-cesta::-webkit-scrollbar-thumb:hover{
+
+    background:#789383;
+
+}
+
+
+/*=========================================================
+    RODAPÉ SEMPRE VISÍVEL
+=========================================================*/
+
+.rodape-cesta{
+
+    flex-shrink:0;
+
+    margin-top:15px;
+    padding-top:17px;
+
+    background:#ffffff;
+
+    border-top:1px solid #dfe7e1;
+
+}
+
+.rodape-cesta .btn-finalizar,
+.rodape-cesta #btnFinalizar{
+
+    width:100%;
+
+    margin:0;
+
+}
+
+
+/*=========================================================
+    RESPONSIVIDADE
+=========================================================*/
+
+@media(max-width:900px){
+
+    .cesta-solicitacao{
+
+        position:static;
+
+        max-height:none;
+
+        overflow:visible;
+
+    }
+
+    .cesta-solicitacao .lista-cesta{
+
+        max-height:none;
+
+        overflow:visible;
+
+        padding-right:0;
+
+    }
+
+}
+
+/*======================================================
+    ESPAÇO PARA O CABEÇALHO FIXO
+======================================================*/
+
+:root{
+
+    --altura-cabecalho: 110px;
+
+}
+
+body{
+
+    padding-top:var(--altura-cabecalho);
+
+}
+
+.banner-solicitar{
+
+    scroll-margin-top:var(--altura-cabecalho);
 
 }

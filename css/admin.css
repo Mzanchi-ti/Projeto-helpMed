@@ -2228,3 +2228,742 @@ a{
     }
 
 }
+
+/*=========================================================
+    DASHBOARD GERENCIAL
+=========================================================*/
+
+.dashboard-cabecalho{
+
+    align-items:flex-start;
+
+}
+
+.descricao-dashboard{
+
+    max-width:650px;
+
+    margin-top:10px;
+
+    color:var(--cinza-texto);
+
+    font-size:15px;
+    line-height:25px;
+
+}
+
+.dashboard-atualizacao{
+
+    min-width:230px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+
+    gap:6px;
+
+    padding:16px 18px;
+
+    background:#ffffff;
+
+    border:1px solid #e2e9e4;
+    border-radius:12px;
+
+    box-shadow:
+        0 7px 24px rgba(0,0,0,.04);
+
+}
+
+.dashboard-atualizacao > span{
+
+    color:#78827c;
+
+    font-size:12px;
+    font-weight:600;
+
+    text-transform:uppercase;
+    letter-spacing:.6px;
+
+}
+
+.dashboard-atualizacao strong{
+
+    color:#18452f;
+
+    font-size:14px;
+
+}
+
+.dashboard-atualizacao .btn-secundario{
+
+    margin-top:6px;
+
+}
+
+
+/*=========================================================
+    ALERTAS OPERACIONAIS
+=========================================================*/
+
+.alertas-dashboard{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:14px;
+
+    margin-bottom:24px;
+
+}
+
+.alerta-dashboard{
+
+    display:flex;
+    align-items:flex-start;
+
+    gap:13px;
+
+    padding:16px 18px;
+
+    border-radius:12px;
+
+    border:1px solid transparent;
+
+}
+
+.alerta-dashboard-icone{
+
+    width:38px;
+    height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    border-radius:10px;
+
+    font-size:19px;
+
+}
+
+.alerta-dashboard-conteudo{
+
+    min-width:0;
+
+}
+
+.alerta-dashboard-conteudo strong{
+
+    display:block;
+
+    margin-bottom:4px;
+
+    color:#30483a;
+
+    font-size:14px;
+
+}
+
+.alerta-dashboard-conteudo p{
+
+    color:#66736b;
+
+    font-size:13px;
+    line-height:21px;
+
+}
+
+.alerta-dashboard.aviso{
+
+    background:#fff9e8;
+
+    border-color:#eadca9;
+
+}
+
+.alerta-dashboard.aviso
+.alerta-dashboard-icone{
+
+    background:#fff0bd;
+
+}
+
+.alerta-dashboard.erro{
+
+    background:#fdf0ee;
+
+    border-color:#efc5bf;
+
+}
+
+.alerta-dashboard.erro
+.alerta-dashboard-icone{
+
+    background:#f9dcd7;
+
+}
+
+.alerta-dashboard.sucesso{
+
+    background:#edf8f0;
+
+    border-color:#c1dec8;
+
+}
+
+.alerta-dashboard.sucesso
+.alerta-dashboard-icone{
+
+    background:#dcefe1;
+
+}
+
+.alerta-dashboard.informacao{
+
+    background:#edf4fa;
+
+    border-color:#cbddec;
+
+}
+
+.alerta-dashboard.informacao
+.alerta-dashboard-icone{
+
+    background:#dceaf6;
+
+}
+
+
+/*=========================================================
+    INDICADORES GERENCIAIS
+=========================================================*/
+
+.grade-indicadores-gerencial{
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+}
+
+.grade-indicadores-gerencial
+.indicador{
+
+    min-height:132px;
+
+}
+
+.grade-indicadores-gerencial
+.indicador > div:last-child{
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+.grade-indicadores-gerencial
+.indicador small{
+
+    margin-top:3px;
+
+    color:#89938d;
+
+    font-size:11px;
+    line-height:17px;
+
+}
+
+
+/*=========================================================
+    GRADE DOS GRÁFICOS
+=========================================================*/
+
+.grade-dashboard-gerencial{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:22px;
+
+    margin-bottom:22px;
+
+}
+
+.painel-grafico{
+
+    min-height:360px;
+
+}
+
+
+/*=========================================================
+    GRÁFICOS DE BARRAS
+=========================================================*/
+
+.grafico-barras-dashboard{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:17px;
+
+}
+
+.linha-grafico-dashboard{
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(120px,170px)
+        minmax(0,1fr)
+        45px;
+
+    align-items:center;
+
+    gap:13px;
+
+}
+
+.rotulo-grafico-dashboard{
+
+    color:#4e5d54;
+
+    font-size:13px;
+    font-weight:600;
+
+}
+
+.trilha-grafico-dashboard{
+
+    position:relative;
+
+    height:13px;
+
+    overflow:hidden;
+
+    background:#e9eeea;
+
+    border-radius:20px;
+
+}
+
+.barra-grafico-dashboard{
+
+    width:0;
+    height:100%;
+
+    border-radius:20px;
+
+    background:var(--verde-principal);
+
+    transition:width .6s ease;
+
+}
+
+.barra-grafico-dashboard.amarela{
+
+    background:var(--dourado);
+
+}
+
+.barra-grafico-dashboard.vermelha{
+
+    background:var(--vermelho);
+
+}
+
+.barra-grafico-dashboard.azul{
+
+    background:var(--azul);
+
+}
+
+.barra-grafico-dashboard.roxa{
+
+    background:#7155a5;
+
+}
+
+.valor-grafico-dashboard{
+
+    color:#30483a;
+
+    font-size:13px;
+    font-weight:700;
+
+    text-align:right;
+
+}
+
+
+/*=========================================================
+    ATIVIDADES RECENTES
+=========================================================*/
+
+.lista-atividades-dashboard{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.item-atividade-dashboard{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:14px 15px;
+
+    background:#f8faf8;
+
+    border:1px solid #e3e9e5;
+    border-radius:11px;
+
+}
+
+.atividade-dashboard-principal{
+
+    min-width:0;
+
+}
+
+.atividade-dashboard-principal strong{
+
+    display:block;
+
+    margin-bottom:3px;
+
+    color:#18452f;
+
+    font-size:14px;
+
+}
+
+.atividade-dashboard-principal span{
+
+    display:block;
+
+    overflow:hidden;
+
+    color:#68746c;
+
+    font-size:12px;
+    line-height:19px;
+
+    text-overflow:ellipsis;
+    white-space:nowrap;
+
+}
+
+.atividade-dashboard-status{
+
+    flex-shrink:0;
+
+}
+
+
+/*=========================================================
+    RESUMO DO ESTOQUE
+=========================================================*/
+
+.resumo-estoque-dashboard{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+    gap:14px;
+
+}
+
+.item-resumo-estoque{
+
+    min-height:135px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    gap:7px;
+
+    padding:18px;
+
+    background:#f8faf8;
+
+    border:1px solid #e1e8e3;
+    border-radius:13px;
+
+    text-align:center;
+
+}
+
+.item-resumo-estoque span{
+
+    color:#707c74;
+
+    font-size:12px;
+    font-weight:600;
+
+}
+
+.item-resumo-estoque strong{
+
+    color:#18452f;
+
+    font-size:28px;
+
+}
+
+.item-resumo-estoque small{
+
+    color:#8b958f;
+
+    font-size:11px;
+
+}
+
+.item-resumo-estoque.disponivel{
+
+    border-top:4px solid var(--verde-principal);
+
+}
+
+.item-resumo-estoque.baixo{
+
+    border-top:4px solid var(--dourado);
+
+}
+
+.item-resumo-estoque.indisponivel{
+
+    border-top:4px solid var(--vermelho);
+
+}
+
+
+/*=========================================================
+    BLOCO INFERIOR
+=========================================================*/
+
+.dashboard-bloco-inferior{
+
+    margin-top:22px;
+
+}
+
+
+/*=========================================================
+    ESTADO VAZIO DO DASHBOARD
+=========================================================*/
+
+.dashboard-vazio{
+
+    padding:28px 18px;
+
+    background:#f8faf8;
+
+    border:1px dashed #cbd6ce;
+    border-radius:11px;
+
+    color:#7a857e;
+
+    font-size:13px;
+    line-height:21px;
+
+    text-align:center;
+
+}
+
+
+/*=========================================================
+    RESPONSIVIDADE
+=========================================================*/
+
+@media(max-width:1180px){
+
+    .grade-indicadores-gerencial{
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+
+    }
+
+    .resumo-estoque-dashboard{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:900px){
+
+    .dashboard-cabecalho{
+
+        flex-direction:column;
+
+    }
+
+    .dashboard-atualizacao{
+
+        width:100%;
+
+        align-items:flex-start;
+
+    }
+
+    .alertas-dashboard{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .grade-dashboard-gerencial{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:650px){
+
+    .grade-indicadores-gerencial{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .linha-grafico-dashboard{
+
+        grid-template-columns:1fr;
+
+        gap:7px;
+
+    }
+
+    .valor-grafico-dashboard{
+
+        text-align:left;
+
+    }
+
+    .item-atividade-dashboard{
+
+        align-items:flex-start;
+        flex-direction:column;
+
+    }
+
+    .atividade-dashboard-status{
+
+        width:100%;
+
+    }
+
+}
+
+/*=========================================================
+    VALIDADE DOS MEDICAMENTOS
+=========================================================*/
+
+.validade-medicamento{
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:7px;
+
+    min-width:145px;
+
+}
+
+.validade-medicamento > span:first-child{
+
+    color:#47564d;
+
+    font-size:13px;
+    font-weight:600;
+
+}
+
+.status-validade{
+
+    display:inline-flex;
+    align-items:center;
+
+    padding:5px 9px;
+
+    border-radius:20px;
+
+    font-size:11px;
+    font-weight:700;
+
+    line-height:16px;
+
+    white-space:nowrap;
+
+}
+
+.validade-regular{
+
+    background:#e7f3eb;
+
+    color:#1d6b45;
+
+}
+
+.validade-proxima{
+
+    background:#fff3ce;
+
+    color:#8a6500;
+
+}
+
+.validade-vencida{
+
+    background:#fdecea;
+
+    color:#a93226;
+
+}
+
+.validade-nao-informada{
+
+    background:#eef1ef;
+
+    color:#68736c;
+
+}
+
+
+/*=========================================================
+    TABELA DE MEDICAMENTOS MAIS LARGA
+=========================================================*/
+
+#pagina-medicamentos .tabela-container{
+
+    overflow-x:auto;
+
+}
+
+#pagina-medicamentos .tabela-admin{
+
+    min-width:1200px;
+
+}

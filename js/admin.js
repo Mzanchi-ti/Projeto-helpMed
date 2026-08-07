@@ -403,6 +403,18 @@ const medicamentoCategoria =
 const medicamentoEstoque =
     document.getElementById("medicamentoEstoque");
 
+const medicamentoFabricante =
+    document.getElementById("medicamentoFabricante");
+
+const medicamentoLote =
+    document.getElementById("medicamentoLote");
+
+const medicamentoValidade =
+    document.getElementById("medicamentoValidade");
+
+const medicamentoDataEntrada =
+    document.getElementById("medicamentoDataEntrada");
+
 const medicamentoReceita =
     document.getElementById("medicamentoReceita");
 
@@ -1251,7 +1263,7 @@ function renderizarMedicamentos(lista){
 
             <tr>
 
-                <td colspan="6">
+                <td colspan="9">
 
                     <div class="mensagem-vazia">
 
@@ -1290,11 +1302,34 @@ function renderizarMedicamentos(lista){
             </td>
 
             <td>
-                ${escaparHtml(medicamento.categoria)}
+                ${escaparHtml(
+                    medicamento.categoria ||
+                    "Não informada"
+                )}
             </td>
 
             <td>
-                ${Number(medicamento.estoque)}
+                ${escaparHtml(
+                    medicamento.fabricante ||
+                    "Não informado"
+                )}
+            </td>
+
+            <td>
+                ${escaparHtml(
+                    medicamento.lote ||
+                    "Não informado"
+                )}
+            </td>
+
+            <td>
+                ${criarSituacaoValidadeMedicamento(
+                    medicamento
+                )}
+            </td>
+
+            <td>
+                ${Number(medicamento.estoque || 0)}
                 unidade(s)
             </td>
 
@@ -1477,6 +1512,13 @@ function abrirCadastroMedicamento(){
 
     }
 
+    if(medicamentoDataEntrada){
+
+    medicamentoDataEntrada.value =
+        obterDataAtualFormulario();
+
+    }
+
     abrirModalMedicamento();
 
 }
@@ -1520,6 +1562,18 @@ function abrirEdicaoMedicamento(id){
     medicamentoEstoque.value =
         Number(medicamento.estoque);
 
+    medicamentoFabricante.value =
+        medicamento.fabricante || "";
+
+    medicamentoLote.value =
+        medicamento.lote || "";
+
+    medicamentoValidade.value =
+        medicamento.validade || "";
+
+    medicamentoDataEntrada.value =
+        medicamento.dataEntrada || "";
+
     medicamentoReceita.value =
         String(Boolean(medicamento.receita));
 
@@ -1553,13 +1607,29 @@ function salvarMedicamento(event){
     const estoque =
         Number(medicamentoEstoque.value);
 
+    const fabricante =
+    medicamentoFabricante.value.trim();
+
+    const lote =
+        medicamentoLote.value.trim();
+
+    const validade =
+        medicamentoValidade.value;
+
+    const dataEntrada =
+        medicamentoDataEntrada.value;
+
     const receita =
         medicamentoReceita.value === "true";
 
     if(
         nome === "" ||
         principio === "" ||
-        categoria === ""
+        categoria === "" ||
+        fabricante === "" ||
+        lote === "" ||
+        validade === "" ||
+        dataEntrada === ""
     ){
 
         exibirMensagemFormulario(
@@ -1615,6 +1685,14 @@ function salvarMedicamento(event){
 
         medicamento.estoque = estoque;
 
+        medicamento.fabricante = fabricante;
+
+        medicamento.lote = lote;
+
+        medicamento.validade = validade;
+
+        medicamento.dataEntrada = dataEntrada;
+
         medicamento.receita = receita;
 
         exibirMensagemFormulario(
@@ -1629,17 +1707,35 @@ function salvarMedicamento(event){
 
         medicamentos.push({
 
-            id: novoId,
+            id:
+                novoId,
 
-            nome: nome,
+            nome:
+                nome,
 
-            principio: principio,
+            principio:
+                principio,
 
-            categoria: categoria,
+            categoria:
+                categoria,
 
-            estoque: estoque,
+            estoque:
+                estoque,
 
-            receita: receita
+            fabricante:
+                fabricante,
+
+            lote:
+                lote,
+
+            validade:
+                validade,
+
+            dataEntrada:
+                dataEntrada,
+
+            receita:
+                receita
 
         });
 
@@ -2342,5 +2438,256 @@ function restaurarMedicamentosOriginais(){
     );
 
     window.location.reload();
+
+}
+
+function obterDataAtualFormulario(){
+
+    const hoje =
+        new Date();
+
+    const ano =
+        hoje.getFullYear();
+
+    const mes =
+        String(
+            hoje.getMonth() + 1
+        ).padStart(2, "0");
+
+    const dia =
+        String(
+            hoje.getDate()
+        ).padStart(2, "0");
+
+    return `${ano}-${mes}-${dia}`;
+
+}
+
+/*=========================================================
+    CONTROLE DE VALIDADE DOS MEDICAMENTOS
+=========================================================*/
+
+function criarSituacaoValidadeMedicamento(
+    medicamento
+){
+
+    const situacao =
+        obterSituacaoValidadeMedicamento(
+            medicamento.validade
+        );
+
+    return `
+
+        <div class="validade-medicamento">
+
+            <span>
+                ${formatarDataMedicamento(
+                    medicamento.validade
+                )}
+            </span>
+
+            <span class="status-validade ${situacao.classe}">
+
+                ${escaparHtml(
+                    situacao.texto
+                )}
+
+            </span>
+
+        </div>
+    `;
+
+}
+
+
+function obterSituacaoValidadeMedicamento(
+    validade
+){
+
+    if(!validade){
+
+        return {
+
+            texto:
+                "Não informada",
+
+            classe:
+                "validade-nao-informada",
+
+            dias:
+                null
+
+        };
+
+    }
+
+    const dataValidade =
+        criarDataLocalMedicamento(
+            validade
+        );
+
+    if(!dataValidade){
+
+        return {
+
+            texto:
+                "Data inválida",
+
+            classe:
+                "validade-nao-informada",
+
+            dias:
+                null
+
+        };
+
+    }
+
+    const hoje =
+        new Date();
+
+    hoje.setHours(0, 0, 0, 0);
+
+    const diferenca =
+        dataValidade.getTime() -
+        hoje.getTime();
+
+    const dias =
+        Math.ceil(
+            diferenca /
+            (1000 * 60 * 60 * 24)
+        );
+
+    if(dias < 0){
+
+        return {
+
+            texto:
+                "Vencido",
+
+            classe:
+                "validade-vencida",
+
+            dias:
+                dias
+
+        };
+
+    }
+
+    if(dias === 0){
+
+        return {
+
+            texto:
+                "Vence hoje",
+
+            classe:
+                "validade-proxima",
+
+            dias:
+                dias
+
+        };
+
+    }
+
+    if(dias <= 30){
+
+        return {
+
+            texto:
+                `Vence em ${dias} dia(s)`,
+
+            classe:
+                "validade-proxima",
+
+            dias:
+                dias
+
+        };
+
+    }
+
+    return {
+
+        texto:
+            "Dentro da validade",
+
+        classe:
+            "validade-regular",
+
+        dias:
+            dias
+
+    };
+
+}
+
+
+function criarDataLocalMedicamento(data){
+
+    const partes =
+        String(data).split("-");
+
+    if(partes.length !== 3){
+
+        return null;
+
+    }
+
+    const ano =
+        Number(partes[0]);
+
+    const mes =
+        Number(partes[1]);
+
+    const dia =
+        Number(partes[2]);
+
+    const resultado =
+        new Date(
+            ano,
+            mes - 1,
+            dia
+        );
+
+    if(
+        Number.isNaN(
+            resultado.getTime()
+        )
+    ){
+
+        return null;
+
+    }
+
+    return resultado;
+
+}
+
+
+function formatarDataMedicamento(data){
+
+    if(!data){
+
+        return "—";
+
+    }
+
+    const partes =
+        String(data).split("-");
+
+    if(partes.length !== 3){
+
+        return escaparHtml(data);
+
+    }
+
+    return (
+        `${partes[2]}/` +
+        `${partes[1]}/` +
+        `${partes[0]}`
+    );
 
 }

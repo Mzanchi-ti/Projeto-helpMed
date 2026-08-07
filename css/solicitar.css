@@ -39,183 +39,272 @@ body{
 
 section{
 
-    padding:80px 0;
+    padding:60px 0;
 
 }
 
-/*=========================
-BANNER
-=========================*/
+/*======================================================
+    APRESENTAÇÃO DA PÁGINA SOLICITAR
+======================================================*/
 
 .banner-solicitar{
 
-    background:linear-gradient(135deg,#18452F,#2D7A54);
+    position:relative;
 
-    color:white;
+    display:block;
 
-    min-height:420px;
+    padding:58px 0 46px;
 
-    display:flex;
+    overflow:hidden;
 
-    align-items:center;
+    background:
+        linear-gradient(
+            135deg,
+            #edf7f1 0%,
+            #f8fbf9 55%,
+            #fff9e8 100%
+        );
+
+    border-bottom:1px solid #dfe9e2;
 
 }
+
+
+/* Elemento decorativo */
+
+.banner-solicitar::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-130px;
+    right:-100px;
+
+    width:380px;
+    height:380px;
+
+    border-radius:50%;
+
+    background:
+        rgba(29,107,69,.06);
+
+    pointer-events:none;
+
+}
+
 
 .banner-texto{
 
-    max-width:720px;
+    position:relative;
+
+    z-index:1;
+
+    width:90%;
+    max-width:1300px;
+
+    margin:0 auto;
 
 }
+
 
 .banner-texto span{
 
-    display:inline-block;
+    display:inline-flex;
+    align-items:center;
 
-    color:#FFD166;
+    margin-bottom:13px;
 
-    font-size:15px;
+    color:#b37d00;
+
+    font-size:13px;
+    font-weight:700;
 
     letter-spacing:2px;
-
-    font-weight:600;
-
-    margin-bottom:18px;
+    text-transform:uppercase;
 
 }
+
 
 .banner-texto h1{
 
-    font-size:56px;
+    max-width:780px;
 
-    line-height:66px;
+    margin:0 0 18px;
 
-    margin-bottom:25px;
+    color:#173f2a;
+
+    font-size:50px;
+    line-height:1.14;
 
 }
+
 
 .banner-texto p{
 
-    font-size:20px;
+    max-width:760px;
 
-    line-height:34px;
+    margin:0;
 
-    color:#edf5ef;
+    color:#4d6455;
+
+    font-size:17px;
+    font-weight:400;
+
+    line-height:1.75;
+
+    opacity:1;
+    visibility:visible;
 
 }
 
-/*=========================
-TÍTULOS
-=========================*/
+/*======================================================
+    TÍTULOS DAS SEÇÕES
+======================================================*/
 
 .titulo-secao{
 
+    max-width:760px;
+
+    margin:0 auto 28px;
+
     text-align:center;
 
-    margin-bottom:45px;
-
 }
+
 
 .titulo-secao span{
 
-    color:#D4A017;
+    display:inline-block;
 
-    font-weight:600;
+    margin-bottom:8px;
+
+    color:#b37d00;
+
+    font-size:13px;
+    font-weight:700;
 
     letter-spacing:2px;
+    text-transform:uppercase;
 
 }
+
 
 .titulo-secao h2{
 
-    margin-top:15px;
+    margin:0;
 
-    font-size:40px;
+    color:#18452f;
 
-    color:#18452F;
+    font-size:36px;
+    line-height:1.25;
 
 }
+
 
 .linha{
 
-    width:90px;
-
+    width:72px;
     height:4px;
 
-    background:#D4A017;
+    margin:14px auto 0;
 
-    margin:18px auto;
-
+    border:none;
     border-radius:20px;
+
+    background:#d4a017;
 
 }
 
-/*=========================
-PESQUISA
-=========================*/
+/*======================================================
+    PESQUISA DE MEDICAMENTOS
+======================================================*/
 
 .barra-pesquisa{
 
-    display:flex;
+    width:100%;
+    max-width:900px;
 
-    gap:18px;
+    display:grid;
 
-    justify-content:center;
+    grid-template-columns:
+        minmax(0,1fr)
+        auto;
 
-    align-items:center;
+    gap:12px;
 
-    margin-top:40px;
+    margin:0 auto;
 
 }
+
 
 .barra-pesquisa input{
 
-    flex:1;
+    width:100%;
 
-    max-width:750px;
+    padding:16px 20px;
 
-    padding:18px 24px;
+    border:1px solid #cddbd1;
+    border-radius:11px;
 
-    border-radius:12px;
+    background:#ffffff;
 
-    border:2px solid #d6dfd7;
+    color:#34483b;
 
-    font-size:18px;
-
-    transition:.30s;
+    font-family:'Poppins',sans-serif;
+    font-size:16px;
 
     outline:none;
 
+    transition:
+        border-color .25s,
+        box-shadow .25s;
+
 }
+
+
+.barra-pesquisa input::placeholder{
+
+    color:#8b978f;
+
+}
+
 
 .barra-pesquisa input:focus{
 
-    border-color:#1D6B45;
+    border-color:#1d6b45;
 
-    box-shadow:0 0 15px rgba(29,107,69,.20);
+    box-shadow:
+        0 0 0 4px rgba(29,107,69,.11);
 
 }
+
 
 .barra-pesquisa button{
 
-    background:#1D6B45;
+    min-width:145px;
 
-    color:white;
+    padding:16px 25px;
 
     border:none;
+    border-radius:11px;
 
-    padding:18px 35px;
+    background:#1d6b45;
+    color:#ffffff;
 
-    border-radius:12px;
+    font-family:'Poppins',sans-serif;
+    font-size:15px;
+    font-weight:700;
 
     cursor:pointer;
 
-    font-size:17px;
-
-    font-weight:600;
-
-    transition:.30s;
+    transition:
+        background .25s,
+        transform .25s,
+        box-shadow .25s;
 
 }
+
 
 .barra-pesquisa button:hover{
 
@@ -223,31 +312,44 @@ PESQUISA
 
     transform:translateY(-2px);
 
+    box-shadow:
+        0 8px 18px rgba(29,107,69,.18);
+
 }
 
-/*=========================
-FILTROS
-=========================*/
+/*======================================================
+    ÁREA DE PESQUISA E FILTROS
+======================================================*/
 
 .filtros{
 
-    background:white;
+    padding:38px 0 42px;
 
-    box-shadow:0 8px 25px rgba(0,0,0,.06);
+    background:#ffffff;
+
+    border-bottom:1px solid #e1e9e3;
+
+    box-shadow:
+        0 8px 24px rgba(24,69,47,.04);
 
 }
+
 
 .filtros .container{
 
-    display:flex;
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,minmax(180px,240px));
 
     justify-content:center;
 
-    gap:35px;
+    gap:18px;
 
-    flex-wrap:wrap;
+    margin-top:28px;
 
 }
+
 
 .filtro{
 
@@ -255,51 +357,60 @@ FILTROS
 
     flex-direction:column;
 
+    gap:8px;
+
 }
+
 
 .filtro label{
 
-    font-weight:600;
+    margin:0;
 
-    margin-bottom:10px;
+    color:#18452f;
 
-    color:#18452F;
+    font-size:13px;
+    font-weight:700;
 
 }
+
 
 .filtro select{
 
-    width:240px;
+    width:100%;
 
-    padding:14px;
+    padding:13px 14px;
 
-    border-radius:10px;
+    border:1px solid #cfdad2;
+    border-radius:9px;
 
-    border:2px solid #d7e1da;
+    background:#ffffff;
+    color:#425348;
 
-    background:white;
-
-    font-size:16px;
+    font-family:'Poppins',sans-serif;
+    font-size:14px;
 
     cursor:pointer;
+    outline:none;
 
-    transition:.30s;
+    transition:
+        border-color .25s,
+        box-shadow .25s;
+
+}
+
+
+.filtro select:hover,
+.filtro select:focus{
+
+    border-color:#1d6b45;
 
 }
 
-.filtro select:hover{
-
-    border-color:#1D6B45;
-
-}
 
 .filtro select:focus{
 
-    outline:none;
-
-    border-color:#1D6B45;
-
-    box-shadow:0 0 10px rgba(29,107,69,.15);
+    box-shadow:
+        0 0 0 3px rgba(29,107,69,.10);
 
 }
 
@@ -311,11 +422,19 @@ FILTROS
 
     display:grid;
 
-    grid-template-columns:3fr 1.2fr;
-
-    gap:35px;
+    grid-template-columns:
+        minmax(0,1fr)
+        minmax(300px,370px);
 
     align-items:start;
+
+    gap:28px;
+
+}
+
+.lista-medicamentos{
+
+    min-width:0;
 
 }
 
@@ -325,11 +444,12 @@ LISTA DE MEDICAMENTOS
 
 .lista-medicamentos h2{
 
-    color:#18452F;
+    margin-bottom:22px;
 
-    margin-bottom:30px;
+    color:#18452f;
 
-    font-size:32px;
+    font-size:28px;
+    line-height:1.3;
 
 }
 
@@ -911,29 +1031,43 @@ RESPONSIVIDADE - SMARTPHONES
 
 @media(max-width:768px){
 
+    @media(max-width:768px){
+
+    .banner-solicitar{
+
+        padding:42px 0 36px;
+
+    }
+
     .banner-texto h1{
 
-        font-size:38px;
-
-        line-height:48px;
+        font-size:37px;
+        line-height:1.2;
 
     }
 
     .banner-texto p{
 
-        font-size:17px;
+        font-size:16px;
+        line-height:1.7;
+
+    }
+
+    .titulo-secao{
+
+        margin-bottom:23px;
+
+    }
+
+    .titulo-secao h2{
+
+        font-size:30px;
 
     }
 
     .barra-pesquisa{
 
-        flex-direction:column;
-
-    }
-
-    .barra-pesquisa input{
-
-        width:100%;
+        grid-template-columns:1fr;
 
     }
 
@@ -943,15 +1077,29 @@ RESPONSIVIDADE - SMARTPHONES
 
     }
 
+    .filtros{
+
+        padding:32px 0 36px;
+
+    }
+
     .filtros .container{
 
-        flex-direction:column;
+        grid-template-columns:1fr;
 
-        align-items:center;
+        max-width:430px;
 
     }
 
     .filtro{
+
+        width:100%;
+
+    }
+
+}
+
+/*    .filtro{
 
         width:100%;
 
@@ -963,7 +1111,7 @@ RESPONSIVIDADE - SMARTPHONES
 
         width:100%;
 
-    }
+    }*/
 
     #medicamentos{
 
@@ -987,6 +1135,16 @@ RESPONSIVIDADE - SMARTPHONES
 
 }
 
+@media(max-width:900px){
+
+    .layout-solicitacao{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
 /*======================================================
 RESPONSIVIDADE - CELULARES PEQUENOS
 ======================================================*/
@@ -995,11 +1153,21 @@ RESPONSIVIDADE - CELULARES PEQUENOS
 
     .banner-texto h1{
 
-        font-size:30px;
+    font-size:31px;
 
-        line-height:38px;
+    line-height:1.22;
 
     }
+
+@media(max-width:768px){
+
+    :root{
+
+    --altura-cabecalho: 82px;
+
+    }
+
+}
 
     .titulo-secao h2{
 
@@ -2135,5 +2303,187 @@ RESPONSIVIDADE
         gap:6px;
 
     }
+
+}
+
+/*=========================================================
+    CESTA LATERAL FIXA
+=========================================================*/
+
+.cesta-solicitacao{
+
+    position:sticky;
+
+    top:105px;
+
+    align-self:start;
+
+    display:flex;
+    flex-direction:column;
+
+    width:100%;
+    max-height:calc(100vh - 125px);
+
+    overflow:hidden;
+
+}
+
+
+/*=========================================================
+    CABEÇALHO DA CESTA
+=========================================================*/
+
+.cabecalho-cesta{
+
+    flex-shrink:0;
+
+    padding-bottom:16px;
+    margin-bottom:14px;
+
+    border-bottom:1px solid #e1e8e3;
+
+}
+
+.cabecalho-cesta h2{
+
+    margin-bottom:6px;
+
+}
+
+.cabecalho-cesta #totalItens{
+
+    color:#657169;
+
+    font-size:14px;
+    font-weight:600;
+
+}
+
+
+/*=========================================================
+    LISTA COM ROLAGEM INDEPENDENTE
+=========================================================*/
+
+.cesta-solicitacao .lista-cesta{
+
+    flex:1;
+
+    min-height:0;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    padding-right:7px;
+
+    scrollbar-width:thin;
+
+}
+
+
+/* Barra de rolagem no Chrome e Edge */
+
+.cesta-solicitacao .lista-cesta::-webkit-scrollbar{
+
+    width:7px;
+
+}
+
+.cesta-solicitacao .lista-cesta::-webkit-scrollbar-track{
+
+    background:#eef2ef;
+
+    border-radius:10px;
+
+}
+
+.cesta-solicitacao .lista-cesta::-webkit-scrollbar-thumb{
+
+    background:#a8bbae;
+
+    border-radius:10px;
+
+}
+
+.cesta-solicitacao .lista-cesta::-webkit-scrollbar-thumb:hover{
+
+    background:#789383;
+
+}
+
+
+/*=========================================================
+    RODAPÉ SEMPRE VISÍVEL
+=========================================================*/
+
+.rodape-cesta{
+
+    flex-shrink:0;
+
+    margin-top:15px;
+    padding-top:17px;
+
+    background:#ffffff;
+
+    border-top:1px solid #dfe7e1;
+
+}
+
+.rodape-cesta .btn-finalizar,
+.rodape-cesta #btnFinalizar{
+
+    width:100%;
+
+    margin:0;
+
+}
+
+
+/*=========================================================
+    RESPONSIVIDADE
+=========================================================*/
+
+@media(max-width:900px){
+
+    .cesta-solicitacao{
+
+        position:static;
+
+        max-height:none;
+
+        overflow:visible;
+
+    }
+
+    .cesta-solicitacao .lista-cesta{
+
+        max-height:none;
+
+        overflow:visible;
+
+        padding-right:0;
+
+    }
+
+}
+
+/*======================================================
+    ESPAÇO PARA O CABEÇALHO FIXO
+======================================================*/
+
+:root{
+
+    --altura-cabecalho: 110px;
+
+}
+
+body{
+
+    padding-top:var(--altura-cabecalho);
+
+}
+
+.banner-solicitar{
+
+    scroll-margin-top:var(--altura-cabecalho);
 
 }

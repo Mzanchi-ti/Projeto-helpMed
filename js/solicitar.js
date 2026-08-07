@@ -3,6 +3,12 @@
     Página Solicitar Medicamentos
 =========================================================*/
 
+/*=========================================================
+    ARMAZENAMENTO DAS SOLICITAÇÕES
+=========================================================*/
+
+const CHAVE_SOLICITACOES_PUBLICAS =
+    "helpmed_solicitacoes_publicas";
 
 /*=========================================================
     Elementos da Interface
@@ -44,6 +50,15 @@ const botaoFinalizar =
 
 const modalFinalizacao =
     document.getElementById("modalFinalizacao");
+
+const nomeSolicitante =
+    document.getElementById("nomeSolicitante");
+
+const telefoneSolicitante =
+    document.getElementById("telefoneSolicitante");
+
+const emailSolicitante =
+    document.getElementById("emailSolicitante");
 
 const fecharFinalizacao =
     document.getElementById("fecharFinalizacao");
@@ -128,6 +143,15 @@ function configurarEventos(){
             }
         );
 
+    if(telefoneSolicitante){
+
+    telefoneSolicitante.addEventListener(
+        "input",
+        aplicarMascaraTelefoneSolicitante
+    );
+
+}
+    
     }
 
     if(botaoPesquisar){
@@ -374,7 +398,9 @@ function criarCardMedicamento(medicamento){
     const card =
         document.createElement("article");
 
-    card.classList.add("card-medicamento");
+    card.classList.add(
+        "card-medicamento"
+    );
 
     const seloEstoque =
         criarSeloEstoque(medicamento);
@@ -392,8 +418,21 @@ function criarCardMedicamento(medicamento){
                 </span>
               `;
 
+    const vencido =
+        medicamentoEstaVencido(
+            medicamento
+        );
+
+    const semEstoque =
+        Number(medicamento.estoque) <= 0;
+
     const indisponivel =
-        medicamento.estoque <= 0;
+        semEstoque || vencido;
+
+    const situacaoValidade =
+        obterSituacaoValidadeSolicitacao(
+            medicamento
+        );
 
     card.innerHTML = `
 
@@ -413,7 +452,8 @@ function criarCardMedicamento(medicamento){
 
         <p>
             <strong>Estoque:</strong>
-            ${medicamento.estoque} unidade(s)
+            ${Number(medicamento.estoque)}
+            unidade(s)
         </p>
 
         <div class="selos">
@@ -421,6 +461,12 @@ function criarCardMedicamento(medicamento){
             ${seloEstoque}
 
             ${seloReceita}
+
+            <span
+                class="selo-validade ${situacaoValidade.classe}"
+            >
+                ${situacaoValidade.texto}
+            </span>
 
         </div>
 
@@ -432,9 +478,11 @@ function criarCardMedicamento(medicamento){
                 ${indisponivel ? "disabled" : ""}
             >
                 ${
-                    indisponivel
-                        ? "Indisponível"
-                        : "Adicionar à Cesta"
+                    vencido
+                        ? "Medicamento vencido"
+                        : semEstoque
+                            ? "Indisponível"
+                            : "Adicionar à Cesta"
                 }
             </button>
 
@@ -449,12 +497,19 @@ function criarCardMedicamento(medicamento){
     `;
 
     const botaoAdicionar =
-        card.querySelector(".btn-adicionar");
+        card.querySelector(
+            ".btn-adicionar"
+        );
 
     const botaoDetalhes =
-        card.querySelector(".btn-detalhes");
+        card.querySelector(
+            ".btn-detalhes"
+        );
 
-    if(!indisponivel){
+    if(
+        !indisponivel &&
+        botaoAdicionar
+    ){
 
         botaoAdicionar.addEventListener(
             "click",
@@ -469,16 +524,20 @@ function criarCardMedicamento(medicamento){
 
     }
 
-    botaoDetalhes.addEventListener(
-        "click",
-        () => {
+    if(botaoDetalhes){
 
-            abrirModal(
-                medicamento.id
-            );
+        botaoDetalhes.addEventListener(
+            "click",
+            () => {
 
-        }
-    );
+                abrirModal(
+                    medicamento.id
+                );
+
+            }
+        );
+
+    }
 
     return card;
 
@@ -1072,6 +1131,60 @@ function atualizarTipoEndereco(){
 
 function validarFinalizacao(){
 
+const nome =
+    nomeSolicitante
+        ? nomeSolicitante.value.trim()
+        : "";
+
+const telefone =
+    telefoneSolicitante
+        ? telefoneSolicitante.value.trim()
+        : "";
+
+const email =
+    emailSolicitante
+        ? emailSolicitante.value.trim()
+        : "";
+
+if(nome.length < 3){
+
+    exibirMensagemFinalizacao(
+        "Informe o nome completo do solicitante.",
+        "erro"
+    );
+
+    nomeSolicitante?.focus();
+
+    return false;
+
+}
+
+if(!validarTelefoneSolicitante(telefone)){
+
+    exibirMensagemFinalizacao(
+        "Informe um telefone válido.",
+        "erro"
+    );
+
+    telefoneSolicitante?.focus();
+
+    return false;
+
+}
+
+if(!validarEmailSolicitante(email)){
+
+    exibirMensagemFinalizacao(
+        "Informe um e-mail válido.",
+        "erro"
+    );
+
+    emailSolicitante?.focus();
+
+    return false;
+
+}
+
     if(!confirmarInformacoes.checked){
 
         exibirMensagemFinalizacao(
@@ -1190,7 +1303,6 @@ function validarFinalizacao(){
 
 }
 
-
 /*=========================================================
     Confirmar pedido
 =========================================================*/
@@ -1215,7 +1327,29 @@ function confirmarPedido(){
             'input[name="tipoEndereco"]:checked'
         );
 
+    const protocolo =
+        gerarProtocoloSolicitacao();
+
     const pedido = {
+
+        id:
+            gerarIdSolicitacao(),
+
+        protocolo:
+            protocolo,
+
+        solicitante: {
+
+            nome:
+                nomeSolicitante.value.trim(),
+
+            telefone:
+                telefoneSolicitante.value.trim(),
+
+            email:
+                emailSolicitante.value.trim()
+
+        },
 
         medicamentos:
             obterResumoCarrinho(),
@@ -1232,6 +1366,12 @@ function confirmarPedido(){
                 arquivoReceita.files.length > 0
             ),
 
+        nomeArquivoReceita:
+            arquivoReceita &&
+            arquivoReceita.files.length > 0
+                ? arquivoReceita.files[0].name
+                : null,
+
         formaRecebimento:
             formaRecebimento,
 
@@ -1244,10 +1384,30 @@ function confirmarPedido(){
         endereco:
             obterEnderecoFinalizacao(),
 
+        dataSolicitacao:
+            new Date().toISOString(),
+
         status:
-            "Aguardando análise"
+            "Aguardando análise",
+
+        origem:
+            "Formulário público"
 
     };
+
+    const pedidoSalvo =
+        salvarSolicitacaoLocalmente(pedido);
+
+    if(!pedidoSalvo){
+
+        exibirMensagemFinalizacao(
+            "Não foi possível registrar a solicitação. Tente novamente.",
+            "erro"
+        );
+
+        return;
+
+    }
 
     console.log(
         "Solicitação criada:",
@@ -1259,7 +1419,7 @@ function confirmarPedido(){
     );
 
     let mensagemSucesso =
-        "Solicitação registrada com sucesso. " +
+        `Solicitação registrada com sucesso. Protocolo: ${pedido.protocolo}. ` +
         "O pedido será encaminhado para análise da equipe da Help Med CWB.";
 
     if(
@@ -1295,6 +1455,141 @@ function confirmarPedido(){
 
 }
 
+/*=========================================================
+    PERSISTÊNCIA DAS SOLICITAÇÕES
+=========================================================*/
+
+function obterSolicitacoesSalvas(){
+
+    try{
+
+        const dados =
+            localStorage.getItem(
+                CHAVE_SOLICITACOES_PUBLICAS
+            );
+
+        if(!dados){
+
+            return [];
+
+        }
+
+        const lista =
+            JSON.parse(dados);
+
+        return Array.isArray(lista)
+            ? lista
+            : [];
+
+    }catch(erro){
+
+        console.error(
+            "Erro ao carregar solicitações:",
+            erro
+        );
+
+        return [];
+
+    }
+
+}
+
+
+function salvarSolicitacaoLocalmente(pedido){
+
+    try{
+
+        const solicitacoes =
+            obterSolicitacoesSalvas();
+
+        solicitacoes.push(pedido);
+
+        localStorage.setItem(
+            CHAVE_SOLICITACOES_PUBLICAS,
+            JSON.stringify(solicitacoes)
+        );
+
+        return true;
+
+    }catch(erro){
+
+        console.error(
+            "Erro ao salvar solicitação:",
+            erro
+        );
+
+        return false;
+
+    }
+
+}
+
+
+/*=========================================================
+    IDENTIFICADORES DA SOLICITAÇÃO
+=========================================================*/
+
+function gerarIdSolicitacao(){
+
+    const solicitacoes =
+        obterSolicitacoesSalvas();
+
+    if(solicitacoes.length === 0){
+
+        return 1;
+
+    }
+
+    const ids =
+        solicitacoes.map(
+            (solicitacao) =>
+                Number(solicitacao.id) || 0
+        );
+
+    return Math.max(...ids) + 1;
+
+}
+
+
+function gerarProtocoloSolicitacao(){
+
+    const agora =
+        new Date();
+
+    const ano =
+        agora.getFullYear();
+
+    const mes =
+        String(
+            agora.getMonth() + 1
+        ).padStart(2, "0");
+
+    const dia =
+        String(
+            agora.getDate()
+        ).padStart(2, "0");
+
+    const hora =
+        String(
+            agora.getHours()
+        ).padStart(2, "0");
+
+    const minuto =
+        String(
+            agora.getMinutes()
+        ).padStart(2, "0");
+
+    const segundo =
+        String(
+            agora.getSeconds()
+        ).padStart(2, "0");
+
+    return (
+        `SOL-${ano}${mes}${dia}-` +
+        `${hora}${minuto}${segundo}`
+    );
+
+}
 
 /*=========================================================
     Obter endereço
@@ -1461,6 +1756,42 @@ function fecharModalFinalizacao(){
 
 function redefinirFormularioFinalizacao(){
 
+    if(nomeSolicitante){
+
+    nomeSolicitante.value = "";
+
+    }
+
+    if(telefoneSolicitante){
+
+    telefoneSolicitante.value = "";
+
+    }
+
+    if(emailSolicitante){
+
+    emailSolicitante.value = "";
+
+    }
+    
+    if(nomeSolicitante){
+
+    nomeSolicitante.value = "";
+
+    }
+
+    if(telefoneSolicitante){
+
+        telefoneSolicitante.value = "";
+
+    }
+
+    if(emailSolicitante){
+
+        emailSolicitante.value = "";
+
+    }
+
     if(arquivoReceita){
 
         arquivoReceita.value = "";
@@ -1536,5 +1867,197 @@ function redefinirFormularioFinalizacao(){
     atualizarFormaRecebimento();
 
     atualizarTipoEndereco();
+
+}
+
+/*=========================================================
+    MÁSCARA DO TELEFONE DO SOLICITANTE
+=========================================================*/
+
+function aplicarMascaraTelefoneSolicitante(){
+
+    let valor =
+        telefoneSolicitante.value.replace(
+            /\D/g,
+            ""
+        );
+
+    valor =
+        valor.slice(0, 11);
+
+    if(valor.length <= 10){
+
+        valor = valor.replace(
+            /^(\d{2})(\d)/,
+            "($1) $2"
+        );
+
+        valor = valor.replace(
+            /(\d{4})(\d)/,
+            "$1-$2"
+        );
+
+    }else{
+
+        valor = valor.replace(
+            /^(\d{2})(\d)/,
+            "($1) $2"
+        );
+
+        valor = valor.replace(
+            /(\d{5})(\d)/,
+            "$1-$2"
+        );
+
+    }
+
+    telefoneSolicitante.value =
+        valor;
+
+}
+
+/*=========================================================
+    VALIDAÇÕES DO SOLICITANTE
+=========================================================*/
+
+function validarTelefoneSolicitante(telefone){
+
+    const numeros =
+        telefone.replace(/\D/g, "");
+
+    return (
+        numeros.length === 10 ||
+        numeros.length === 11
+    );
+
+}
+
+
+function validarEmailSolicitante(email){
+
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        .test(email);
+
+}
+
+/*=========================================================
+    CONTROLE DE VALIDADE NA SOLICITAÇÃO
+=========================================================*/
+
+function medicamentoEstaVencido(medicamento){
+
+    if(
+        !medicamento ||
+        !medicamento.validade
+    ){
+
+        return false;
+
+    }
+
+    const partes =
+        String(medicamento.validade)
+            .split("-");
+
+    if(partes.length !== 3){
+
+        return false;
+
+    }
+
+    const dataValidade =
+        new Date(
+            Number(partes[0]),
+            Number(partes[1]) - 1,
+            Number(partes[2])
+        );
+
+    if(Number.isNaN(dataValidade.getTime())){
+
+        return false;
+
+    }
+
+    const hoje =
+        new Date();
+
+    hoje.setHours(0, 0, 0, 0);
+
+    return dataValidade < hoje;
+
+}
+
+
+function obterSituacaoValidadeSolicitacao(
+    medicamento
+){
+
+    if(!medicamento.validade){
+
+        return {
+
+            texto:
+                "Validade não informada",
+
+            classe:
+                "validade-nao-informada"
+
+        };
+
+    }
+
+    if(medicamentoEstaVencido(medicamento)){
+
+        return {
+
+            texto:
+                "Medicamento vencido",
+
+            classe:
+                "validade-vencida"
+
+        };
+
+    }
+
+    return {
+
+        texto:
+            `Validade: ${
+                formatarDataValidadeSolicitacao(
+                    medicamento.validade
+                )
+            }`,
+
+        classe:
+            "validade-regular"
+
+    };
+
+}
+
+
+function formatarDataValidadeSolicitacao(data){
+
+    if(!data){
+
+        return "Não informada";
+
+    }
+
+    const partes =
+        String(data).split("-");
+
+    if(partes.length !== 3){
+
+        return data;
+
+    }
+
+    return (
+        `${partes[2]}/` +
+        `${partes[1]}/` +
+        `${partes[0]}`
+    );
 
 }

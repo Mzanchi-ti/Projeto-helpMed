@@ -181,146 +181,478 @@
         DASHBOARD
         ========================================== -->
 
-        <section
-            id="pagina-dashboard"
-            class="pagina-admin ativa"
-        >
+        <!-- =========================================
+DASHBOARD GERENCIAL
+========================================== -->
 
-            <div class="cabecalho-pagina">
+<section
+    id="pagina-dashboard"
+    class="pagina-admin ativa"
+>
+
+    <div class="cabecalho-pagina dashboard-cabecalho">
+
+        <div>
+
+            <span>VISÃO GERENCIAL</span>
+
+            <h2>
+                Dashboard Help Med CWB
+            </h2>
+
+            <p class="descricao-dashboard">
+                Acompanhe estoque, doações, solicitações e
+                atividades operacionais da associação.
+            </p>
+
+        </div>
+
+        <div class="dashboard-atualizacao">
+
+            <span>
+                Última atualização
+            </span>
+
+            <strong id="dataAtualizacaoDashboard">
+                —
+            </strong>
+
+            <button
+                type="button"
+                id="btnAtualizarDashboard"
+                class="btn-secundario"
+            >
+                Atualizar dados
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+    ALERTAS OPERACIONAIS
+    ====================================== -->
+
+    <div
+        id="alertasDashboard"
+        class="alertas-dashboard"
+    >
+        <!-- Preenchido pelo dashboard.js -->
+    </div>
+
+
+    <!-- =====================================
+    INDICADORES PRINCIPAIS
+    ====================================== -->
+
+    <div class="grade-indicadores grade-indicadores-gerencial">
+
+        <article class="indicador">
+
+            <div class="icone-indicador verde">
+                💊
+            </div>
+
+            <div>
+
+                <span>
+                    Medicamentos cadastrados
+                </span>
+
+                <strong id="indicadorMedicamentos">
+                    0
+                </strong>
+
+                <small>
+                    Itens diferentes no catálogo
+                </small>
+
+            </div>
+
+        </article>
+
+
+        <article class="indicador">
+
+            <div class="icone-indicador azul">
+                📦
+            </div>
+
+            <div>
+
+                <span>
+                    Unidades em estoque
+                </span>
+
+                <strong id="indicadorEstoque">
+                    0
+                </strong>
+
+                <small>
+                    Quantidade disponível
+                </small>
+
+            </div>
+
+        </article>
+
+
+        <article class="indicador">
+
+            <div class="icone-indicador amarelo">
+                📋
+            </div>
+
+            <div>
+
+                <span>
+                    Solicitações pendentes
+                </span>
+
+                <strong id="indicadorPendentes">
+                    0
+                </strong>
+
+                <small>
+                    Aguardando análise
+                </small>
+
+            </div>
+
+        </article>
+
+
+        <article class="indicador">
+
+            <div class="icone-indicador vermelho">
+                ⚠️
+            </div>
+
+            <div>
+
+                <span>
+                    Estoque baixo
+                </span>
+
+                <strong id="indicadorEstoqueBaixo">
+                    0
+                </strong>
+
+                <small>
+                    Até 50 unidades
+                </small>
+
+            </div>
+
+        </article>
+
+
+        <article class="indicador">
+
+            <div class="icone-indicador azul">
+                🤝
+            </div>
+
+            <div>
+
+                <span>
+                    Doações aguardando triagem
+                </span>
+
+                <strong id="indicadorDoacoesDashboard">
+                    0
+                </strong>
+
+                <small>
+                    Pendentes de avaliação
+                </small>
+
+            </div>
+
+        </article>
+
+
+        <article class="indicador">
+
+            <div class="icone-indicador verde">
+                ✅
+            </div>
+
+            <div>
+
+                <span>
+                    Solicitações entregues
+                </span>
+
+                <strong id="indicadorEntreguesDashboard">
+                    0
+                </strong>
+
+                <small>
+                    Pedidos concluídos
+                </small>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- =====================================
+    RESUMO OPERACIONAL
+    ====================================== -->
+
+    <div class="grade-dashboard-gerencial">
+
+        <!-- SOLICITAÇÕES POR STATUS -->
+
+        <article class="painel painel-grafico">
+
+            <div class="cabecalho-painel">
 
                 <div>
-                    <span>VISÃO GERAL</span>
-                    <h2>Indicadores da Help Med CWB</h2>
+
+                    <span>SOLICITAÇÕES</span>
+
+                    <h3>
+                        Distribuição por status
+                    </h3>
+
                 </div>
 
-                <p>
-                    Acompanhe os principais dados de estoque e
-                    solicitações da associação.
-                </p>
+                <button
+                    type="button"
+                    class="btn-link"
+                    data-abrir-pagina="solicitacoes"
+                >
+                    Ver solicitações
+                </button>
 
             </div>
 
-            <div class="grade-indicadores">
+            <div
+                id="graficoStatusSolicitacoes"
+                class="grafico-barras-dashboard"
+            >
+                <!-- Preenchido pelo dashboard.js -->
+            </div>
 
-                <article class="indicador">
+        </article>
 
-                    <div class="icone-indicador verde">
-                        💊
-                    </div>
 
-                    <div>
-                        <span>Medicamentos cadastrados</span>
-                        <strong id="indicadorMedicamentos">0</strong>
-                    </div>
+        <!-- DOAÇÕES POR STATUS -->
 
-                </article>
+        <article class="painel painel-grafico">
 
-                <article class="indicador">
+            <div class="cabecalho-painel">
 
-                    <div class="icone-indicador azul">
-                        📦
-                    </div>
+                <div>
 
-                    <div>
-                        <span>Unidades em estoque</span>
-                        <strong id="indicadorEstoque">0</strong>
-                    </div>
+                    <span>DOAÇÕES</span>
 
-                </article>
+                    <h3>
+                        Distribuição por status
+                    </h3>
 
-                <article class="indicador">
+                </div>
 
-                    <div class="icone-indicador amarelo">
-                        ⏳
-                    </div>
-
-                    <div>
-                        <span>Solicitações pendentes</span>
-                        <strong id="indicadorPendentes">0</strong>
-                    </div>
-
-                </article>
-
-                <article class="indicador">
-
-                    <div class="icone-indicador vermelho">
-                        ⚠️
-                    </div>
-
-                    <div>
-                        <span>Medicamentos com estoque baixo</span>
-                        <strong id="indicadorEstoqueBaixo">0</strong>
-                    </div>
-
-                </article>
+                <button
+                    type="button"
+                    class="btn-link"
+                    data-abrir-pagina="doacoes"
+                >
+                    Ver doações
+                </button>
 
             </div>
 
-            <div class="grade-dashboard">
+            <div
+                id="graficoStatusDoacoes"
+                class="grafico-barras-dashboard"
+            >
+                <!-- Preenchido pelo dashboard.js -->
+            </div>
 
-                <article class="painel">
+        </article>
 
-                    <div class="cabecalho-painel">
+    </div>
 
-                        <div>
-                            <span>SOLICITAÇÕES</span>
-                            <h3>Solicitações recentes</h3>
-                        </div>
 
-                        <button
-                            type="button"
-                            class="btn-link"
-                            data-abrir-pagina="solicitacoes"
-                        >
-                            Ver todas
-                        </button>
+    <!-- =====================================
+    ATIVIDADES RECENTES
+    ====================================== -->
 
-                    </div>
+    <div class="grade-dashboard">
 
-                    <div class="tabela-container">
+        <!-- SOLICITAÇÕES RECENTES -->
 
-                        <table class="tabela-admin">
+        <article class="painel">
 
-                            <thead>
-                                <tr>
-                                    <th>Protocolo</th>
-                                    <th>Solicitante</th>
-                                    <th>Data</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
+            <div class="cabecalho-painel">
 
-                            <tbody id="dashboardSolicitacoes">
-                            </tbody>
+                <div>
 
-                        </table>
+                    <span>ATIVIDADES</span>
 
-                    </div>
+                    <h3>
+                        Solicitações recentes
+                    </h3>
 
-                </article>
+                </div>
 
-                <article class="painel">
-
-                    <div class="cabecalho-painel">
-
-                        <div>
-                            <span>ATENÇÃO</span>
-                            <h3>Estoque baixo</h3>
-                        </div>
-
-                    </div>
-
-                    <div
-                        id="dashboardEstoqueBaixo"
-                        class="lista-alertas"
-                    >
-                    </div>
-
-                </article>
+                <button
+                    type="button"
+                    class="btn-link"
+                    data-abrir-pagina="solicitacoes"
+                >
+                    Ver todas
+                </button>
 
             </div>
 
-        </section>
+            <div class="tabela-container">
+
+                <table class="tabela-admin">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Protocolo</th>
+
+                            <th>Solicitante</th>
+
+                            <th>Data</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="dashboardSolicitacoes">
+                        <!-- Preenchido pelo dashboard.js -->
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </article>
+
+
+        <!-- ESTOQUE CRÍTICO -->
+
+        <article class="painel">
+
+            <div class="cabecalho-painel">
+
+                <div>
+
+                    <span>ATENÇÃO</span>
+
+                    <h3>
+                        Estoque crítico
+                    </h3>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-link"
+                    data-abrir-pagina="medicamentos"
+                >
+                    Ver estoque
+                </button>
+
+            </div>
+
+            <div
+                id="dashboardEstoqueBaixo"
+                class="lista-alertas"
+            >
+                <!-- Preenchido pelo dashboard.js -->
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- =====================================
+    DOAÇÕES E MEDICAMENTOS
+    ====================================== -->
+
+    <div class="grade-dashboard dashboard-bloco-inferior">
+
+        <!-- DOAÇÕES RECENTES -->
+
+        <article class="painel">
+
+            <div class="cabecalho-painel">
+
+                <div>
+
+                    <span>ENTRADAS</span>
+
+                    <h3>
+                        Doações recentes
+                    </h3>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-link"
+                    data-abrir-pagina="doacoes"
+                >
+                    Ver todas
+                </button>
+
+            </div>
+
+            <div
+                id="dashboardDoacoesRecentes"
+                class="lista-atividades-dashboard"
+            >
+                <!-- Preenchido pelo dashboard.js -->
+            </div>
+
+        </article>
+
+
+        <!-- DISTRIBUIÇÃO DO ESTOQUE -->
+
+        <article class="painel">
+
+            <div class="cabecalho-painel">
+
+                <div>
+
+                    <span>ESTOQUE</span>
+
+                    <h3>
+                        Situação dos medicamentos
+                    </h3>
+
+                </div>
+
+            </div>
+
+            <div
+                id="resumoSituacaoEstoque"
+                class="resumo-estoque-dashboard"
+            >
+                <!-- Preenchido pelo dashboard.js -->
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
 
         <!-- =========================================
         MEDICAMENTOS
@@ -396,9 +728,12 @@
                             <tr>
                                 <th>Medicamento</th>
                                 <th>Categoria</th>
+                                <th>Fabricante</th>
+                                <th>Lote</th>
+                                <th>Validade</th>
                                 <th>Estoque</th>
                                 <th>Receita</th>
-                                <th>Status</th>
+                                <th>Situação</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -456,6 +791,10 @@
 
                     <option value="Aprovada">
                         Aprovada
+                    </option>
+
+                    <option value="Em separação">
+                        Em separação
                     </option>
 
                     <option value="Recusada">
@@ -848,6 +1187,62 @@ MODAL DE MEDICAMENTO
                         type="number"
                         id="medicamentoEstoque"
                         min="0"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo-formulario">
+
+                    <label for="medicamentoFabricante">
+                        Fabricante
+                    </label>
+
+                    <input
+                        type="text"
+                        id="medicamentoFabricante"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo-formulario">
+
+                    <label for="medicamentoLote">
+                        Número do lote
+                    </label>
+
+                    <input
+                        type="text"
+                        id="medicamentoLote"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo-formulario">
+
+                    <label for="medicamentoValidade">
+                        Data de validade
+                    </label>
+
+                    <input
+                        type="date"
+                        id="medicamentoValidade"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo-formulario">
+
+                    <label for="medicamentoDataEntrada">
+                        Data de entrada
+                    </label>
+
+                    <input
+                        type="date"
+                        id="medicamentoDataEntrada"
                         required
                     >
 
@@ -1430,6 +1825,8 @@ MODAL DE DETALHES DA DOAÇÃO
 <script src="js/medicamentos.js"></script>
 <script src="js/admin.js"></script>
 <script src="js/doacoes.js"></script>
+<script src="js/solicitacoes.js"></script>
+<script src="js/dashboard.js"></script>
 
 </body>
 </html>
